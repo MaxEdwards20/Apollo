@@ -9,20 +9,35 @@
 /* Begin PBXBuildFile section */
 		CF6BDD822AF435D8009B9F0E /* ApolloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD812AF435D8009B9F0E /* ApolloApp.swift */; };
 		CF6BDD842AF435D8009B9F0E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD832AF435D8009B9F0E /* ContentView.swift */; };
-		CF6BDD862AF435D8009B9F0E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD852AF435D8009B9F0E /* Item.swift */; };
 		CF6BDD882AF435DA009B9F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6BDD872AF435DA009B9F0E /* Assets.xcassets */; };
 		CF6BDD8B2AF435DA009B9F0E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6BDD8A2AF435DA009B9F0E /* Preview Assets.xcassets */; };
+		CF6BDD952AF43758009B9F0E /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD942AF43758009B9F0E /* Exercise.swift */; };
+		CF6BDD972AF437C6009B9F0E /* WorkoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD962AF437C6009B9F0E /* WorkoutSet.swift */; };
+		CF6BDD9B2AF47AD5009B9F0E /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD9A2AF47AD5009B9F0E /* AddExerciseView.swift */; };
+		CF6BDD9D2AF47F95009B9F0E /* SampleExercises.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD9C2AF47F95009B9F0E /* SampleExercises.swift */; };
+		CF6BDDA02AF480A0009B9F0E /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD9F2AF480A0009B9F0E /* PreviewSampleData.swift */; };
+		CF6BDDA22AF484B8009B9F0E /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDDA12AF484B8009B9F0E /* ExerciseView.swift */; };
+		CF6BDDA42AF48943009B9F0E /* ExerciseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDDA32AF48943009B9F0E /* ExerciseDetailScreen.swift */; };
+		CF6BDDA82AF494FA009B9F0E /* ExerciseGroupPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDDA72AF494FA009B9F0E /* ExerciseGroupPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CF6BDD7E2AF435D8009B9F0E /* Apollo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apollo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6BDD812AF435D8009B9F0E /* ApolloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloApp.swift; sourceTree = "<group>"; };
 		CF6BDD832AF435D8009B9F0E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		CF6BDD852AF435D8009B9F0E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		CF6BDD872AF435DA009B9F0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF6BDD8A2AF435DA009B9F0E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CF6BDD8C2AF435DA009B9F0E /* Apollo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Apollo.entitlements; sourceTree = "<group>"; };
 		CF6BDD8D2AF435DA009B9F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF6BDD942AF43758009B9F0E /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		CF6BDD962AF437C6009B9F0E /* WorkoutSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSet.swift; sourceTree = "<group>"; };
+		CF6BDD9A2AF47AD5009B9F0E /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
+		CF6BDD9C2AF47F95009B9F0E /* SampleExercises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleExercises.swift; sourceTree = "<group>"; };
+		CF6BDD9F2AF480A0009B9F0E /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
+		CF6BDDA12AF484B8009B9F0E /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
+		CF6BDDA32AF48943009B9F0E /* ExerciseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailScreen.swift; sourceTree = "<group>"; };
+		CF6BDDA72AF494FA009B9F0E /* ExerciseGroupPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupPicker.swift; sourceTree = "<group>"; };
+		CF6BDDA92AF49D88009B9F0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +54,7 @@
 		CF6BDD752AF435D7009B9F0E = {
 			isa = PBXGroup;
 			children = (
+				CF6BDDA92AF49D88009B9F0E /* README.md */,
 				CF6BDD802AF435D8009B9F0E /* Apollo */,
 				CF6BDD7F2AF435D8009B9F0E /* Products */,
 			);
@@ -57,7 +73,9 @@
 			children = (
 				CF6BDD812AF435D8009B9F0E /* ApolloApp.swift */,
 				CF6BDD832AF435D8009B9F0E /* ContentView.swift */,
-				CF6BDD852AF435D8009B9F0E /* Item.swift */,
+				CF6BDD992AF47ABE009B9F0E /* Views */,
+				CF6BDD932AF43734009B9F0E /* Models */,
+				CF6BDD9E2AF48066009B9F0E /* Support */,
 				CF6BDD872AF435DA009B9F0E /* Assets.xcassets */,
 				CF6BDD8C2AF435DA009B9F0E /* Apollo.entitlements */,
 				CF6BDD8D2AF435DA009B9F0E /* Info.plist */,
@@ -72,6 +90,35 @@
 				CF6BDD8A2AF435DA009B9F0E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CF6BDD932AF43734009B9F0E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CF6BDD942AF43758009B9F0E /* Exercise.swift */,
+				CF6BDD962AF437C6009B9F0E /* WorkoutSet.swift */,
+				CF6BDD9C2AF47F95009B9F0E /* SampleExercises.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CF6BDD992AF47ABE009B9F0E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF6BDD9A2AF47AD5009B9F0E /* AddExerciseView.swift */,
+				CF6BDDA12AF484B8009B9F0E /* ExerciseView.swift */,
+				CF6BDDA32AF48943009B9F0E /* ExerciseDetailScreen.swift */,
+				CF6BDDA72AF494FA009B9F0E /* ExerciseGroupPicker.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CF6BDD9E2AF48066009B9F0E /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				CF6BDD9F2AF480A0009B9F0E /* PreviewSampleData.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,8 +191,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF6BDDA22AF484B8009B9F0E /* ExerciseView.swift in Sources */,
+				CF6BDD972AF437C6009B9F0E /* WorkoutSet.swift in Sources */,
 				CF6BDD842AF435D8009B9F0E /* ContentView.swift in Sources */,
-				CF6BDD862AF435D8009B9F0E /* Item.swift in Sources */,
+				CF6BDDA82AF494FA009B9F0E /* ExerciseGroupPicker.swift in Sources */,
+				CF6BDDA42AF48943009B9F0E /* ExerciseDetailScreen.swift in Sources */,
+				CF6BDD952AF43758009B9F0E /* Exercise.swift in Sources */,
+				CF6BDD9D2AF47F95009B9F0E /* SampleExercises.swift in Sources */,
+				CF6BDDA02AF480A0009B9F0E /* PreviewSampleData.swift in Sources */,
+				CF6BDD9B2AF47AD5009B9F0E /* AddExerciseView.swift in Sources */,
 				CF6BDD822AF435D8009B9F0E /* ApolloApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,7 +349,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Apollo.Apollo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Apollo.ApolloFitness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -326,7 +380,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Apollo.Apollo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Apollo.ApolloFitness;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
