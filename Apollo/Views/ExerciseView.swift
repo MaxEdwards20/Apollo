@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ExerciseView: View {
-    let exercises: [Exercise]
+    @Query private var exercises: [Exercise]
     @Environment(\.modelContext) private var context
+    
     
     //    public func addSet(set: WorkoutSet){
     //        // add item to history
@@ -67,9 +69,9 @@ struct ExerciseView: View {
                         // Seems to be limit on only have 2 text fields
                         VStack(alignment: .leading){
                             Text(exercise.name)
-                                .font(.title3)
-                            Text("\(exercise.maxWeight) - \(exercise.group.name)")
                                 .font(.title2)
+                            Text("\(exercise.maxWeight) - \(exercise.group.name)")
+                                .font(.caption)
 
                         }
                     }
@@ -82,6 +84,7 @@ struct ExerciseView: View {
 }
 
 // Not sure how to get this preview to work
-//#Preview {
-//    ExerciseView(exercises: SampleExercises.contents).modelContainer(for: [Exercise.self, WorkoutSet.self])
-//}
+#Preview {
+    ExerciseView()
+        .modelContainer(previewContainer)
+}

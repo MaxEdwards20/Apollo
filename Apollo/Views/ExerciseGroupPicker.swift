@@ -10,12 +10,18 @@ import SwiftUI
 struct ExerciseGroupPicker: View {
     @Binding var selectedOption: Exercise.ExerciseGroup
     
+    // SwiftUI needs the selectedOption and tag to be the same values
+    // https://stackoverflow.com/questions/66617659/picker-selection-not-updating
+    
     var body: some View {
-        Picker("Group", selection: $selectedOption){
-            ForEach(Exercise.ExerciseGroup.allCases){group in
-                Text(group.name)
+        List {
+            Picker("Group", selection: $selectedOption){
+                ForEach(Exercise.ExerciseGroup.allCases){group in
+                    Text(group.name)
+                        .tag(group)
+                }
             }
-        }.pickerStyle(.wheel)
+        }
     }
 }
 

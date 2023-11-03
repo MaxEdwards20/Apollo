@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             VStack {
-                ExerciseView(exercises: exercises)
+                ExerciseView()
                     .navigationTitle("Your Exercises")
             }
             .sheet(isPresented: $isPresented, content: {
@@ -38,5 +38,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: [Exercise.self, WorkoutSet.self])
+        .modelContainer(previewContainer)
 }

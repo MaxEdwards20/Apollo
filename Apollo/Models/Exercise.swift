@@ -10,16 +10,18 @@ import SwiftData
 
 @Model
 final class Exercise {
-    @Attribute(.unique) var id: UUID
-    @Attribute(.unique) var name:String // Makes sure we only have 1 exercise
+    var id: UUID
+    var name:String // Makes sure we only have 1 exercise
     var maxWeight:Int // Max weight ever lifted for this exercise
-//    var bestSet:WorkoutSet? // max total weight done in a set (weight * reps)
-//    var history:[WorkoutSet]?
     var group:ExerciseGroup
+    var bestSet:WorkoutSet? // max total weight done in a set (weight * reps)
+    var history:[WorkoutSet]?
+
     
     init( name: String, maxWeight: Int = 0, group:ExerciseGroup) {
         self.id = UUID()
-        self.name = name.lowercased()
+        var name = name.lowercased()
+        self.name = name.capitalized
         self.maxWeight = maxWeight
         self.group = group
     }

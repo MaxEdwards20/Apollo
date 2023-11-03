@@ -10,8 +10,10 @@ import SwiftData
 
 // Taken from preview sample data here https://docs-assets.developer.apple.com/published/a378001f6c52/BuildingADocumentBasedAppUsingSwiftData.zip
 
+// Article with explanation here
+// https://www.hackingwithswift.com/quick-start/swiftdata/how-to-use-swiftdata-in-swiftui-previews
 @MainActor
-let previewContainer: ModelContainer = {
+ let previewContainer: ModelContainer = {
     do {
         let container = try ModelContainer(
             for: Exercise.self,

@@ -40,13 +40,14 @@ struct AddExerciseView: View {
                     }
                 }
             }
-        
+            
         }
-
+        
     }
 }
 
 
 #Preview {
-    AddExerciseView().modelContainer(for: [Exercise.self, WorkoutSet.self])
+    AddExerciseView()
+        .modelContainer(previewContainer)
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ExerciseDetailScreen: View {
     let exercise: Exercise
@@ -38,5 +39,7 @@ struct ExerciseDetailScreen: View {
 }
 
 #Preview {
-    ExerciseDetailScreen(exercise: SampleExercises.contents[0]).modelContainer(for: [Exercise.self, WorkoutSet.self])
+    let exercises: [Exercise] = SampleExercises.contents // one source of truth
+    return ExerciseDetailScreen(exercise: exercises[0])
+        .modelContainer(previewContainer)
 }
