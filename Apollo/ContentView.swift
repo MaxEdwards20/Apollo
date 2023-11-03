@@ -11,11 +11,11 @@ import SwiftData
 struct ContentView: View {
     @State private var isPresented: Bool = false
     @Query private var exercises: [Exercise] // one source of truth
-    
+    @Environment(\.modelContext) private var context
     var body: some View {
         NavigationStack{
             VStack {
-                ExerciseView()
+                ExerciseView(exercises: exercises)
                     .navigationTitle("Your Exercises")
             }
             .sheet(isPresented: $isPresented, content: {
@@ -32,7 +32,6 @@ struct ContentView: View {
             }
         }
     }
-
 
 }
 

@@ -16,6 +16,7 @@ final class WorkoutSet: Identifiable {
     var reps: Int
     var notes:String
     var totalWeight:Int
+    var exercise: Exercise?
     
     init(weight: Float, reps: Int, notes: String = "") {
         self.id = UUID()
@@ -25,15 +26,18 @@ final class WorkoutSet: Identifiable {
         self.notes = notes
         self.totalWeight = Int(weight) * reps
     }
+    
+    static func delete(_ workoutSet: WorkoutSet){
+        if let context = workoutSet.modelContext {
+            context.delete(workoutSet)
+        }
+    }
 }
 
-//extension WorkoutSet {
-//    static let sampleData: [WorkoutSet] =
-//    [
-//        WorkoutSet(weight: 225, reps: 1, notes: "Felt Heavy"),
-//        WorkoutSet(weight: 275, reps: 4),
-//        WorkoutSet(weight: 45, reps: 10)
-//    ]
-//}
-//
+extension WorkoutSet : Comparable {
+    public static func < (lhs: WorkoutSet, rhs: WorkoutSet) -> Bool {
+        lhs.timestamp < rhs.timestamp
+    }
+}
+
 

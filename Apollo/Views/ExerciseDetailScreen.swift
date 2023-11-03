@@ -9,37 +9,52 @@ import SwiftUI
 import SwiftData
 
 struct ExerciseDetailScreen: View {
-    let exercise: Exercise
+    var exercise: Exercise
+    @Environment(\.dismiss) private var dismiss
+    @State private var isShowingAddSets = false
     @State private var name:String = ""
     @State private var maxWeight:Int = 0
     @State private var selectedOption: Exercise.ExerciseGroup = Exercise.ExerciseGroup.abs
-    @Environment(\.modelContext) private var context
-    @Environment(\.dismiss) private var dismiss
-    
+    // TODO: Add view differences. If we have history, then set all of the values to their approrpiate maxes. If not, use the default values
+
     var body: some View {
-        Form {
-            TextField("Name", text: $name)
-            TextField("Max Weight", value: $maxWeight, format: .number)
-            ExerciseGroupPicker(selectedOption: $selectedOption)
-        }.toolbar(){
-            ToolbarItem(){
-                Button("Update"){
-                    exercise.name = name
-                    exercise.maxWeight = maxWeight
-                    exercise.group = selectedOption
-                    dismiss()
+        VStack {
+            Text(exercise.name).font(.title)
+            Form {
+                TextField("Name", text: $name)
+                TextField("Max Weight", value: $maxWeight, format: .number)
+                ExerciseGroupPicker(selectedOption: $selectedOption)
+            }.onAppear{
+                selectedOption = exercise.group
+            }
+            .toolbar(){
+                ToolbarItem(){
+                    Button("Update"){
+                        exercise.name = name
+                        exercise.maxWeight = maxWeight
+                        exercise.group = selectedOption
+                        dismiss()
+                    }
                 }
             }
-        }
-        .onAppear {
-            name = exercise.name
-            maxWeight = exercise.maxWeight
+            .onAppear {
+                name = exercise.name
+                maxWeight = exercise.maxWeight
+            }
+            Spacer()
+            Button("Add a Set"){
+                isShowingAddSets = true
+            }.popover(isPresented: $isShowingAddSets, content: {
+                AddWorkoutSetView(exercise: exercise, isShowingAddSets: $isShowingAddSets)
+                    .padding()
+            })
+            WorkoutHistoryView(exercise: exercise)
         }
     }
 }
 
 #Preview {
-    let exercises: [Exercise] = SampleExercises.contents // one source of truth
-    return ExerciseDetailScreen(exercise: exercises[0])
+
+    return ExerciseDetailScreen(exercise: SampleExercises.contents[0])
         .modelContainer(previewContainer)
 }
