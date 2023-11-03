@@ -112,9 +112,9 @@
 				CF6BDD9A2AF47AD5009B9F0E /* AddExerciseView.swift */,
 				CF6BDDA12AF484B8009B9F0E /* ExerciseView.swift */,
 				CF6BDDA32AF48943009B9F0E /* ExerciseDetailScreen.swift */,
-				CF6BDDA72AF494FA009B9F0E /* ExerciseGroupPicker.swift */,
-				CF6BDDAA2AF54F2E009B9F0E /* AddWorkoutSetView.swift */,
 				CF6BDDAC2AF55556009B9F0E /* WorkoutHistoryView.swift */,
+				CF6BDDAA2AF54F2E009B9F0E /* AddWorkoutSetView.swift */,
+				CF6BDDA72AF494FA009B9F0E /* ExerciseGroupPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

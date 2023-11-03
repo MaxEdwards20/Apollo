@@ -21,10 +21,17 @@ struct AddExerciseView: View {
     var body: some View {
         NavigationStack{
             Form {
-                TextField("Exercise Name", text: $name)
-                TextField("Max Weight", value: $maxWeight, format: .number)
+                HStack{
+                    Text("Exercise: ")
+                    TextField("Name", text: $name)
+                }
+//                HStack{
+//                    Text("Personal Record: ")
+//                    TextField("Max Weight", value: $maxWeight, format: .number)
+//                }
                 ExerciseGroupPicker(selectedOption: $group)
             }
+            
             .navigationTitle("Add Exercise")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing){

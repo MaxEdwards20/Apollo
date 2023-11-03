@@ -18,6 +18,7 @@ struct ExerciseView: View {
             context.delete(exercise)
         }
     }
+    // TODO: Add Most recent set to the exercise view
     
     var body: some View {
         List {
@@ -28,15 +29,14 @@ struct ExerciseView: View {
                         VStack(alignment: .leading){
                             Text(exercise.name)
                                 .font(.title2)
-                            Text("\(exercise.maxWeight) - \(exercise.group.name)")
+                            Text("\(exercise.group.name)")
                                 .font(.title3)
-
                         }
                     }
                 }
             }.onDelete(perform: deleteExercise)
         }.navigationDestination(for: Exercise.self) { exercise in
-            ExerciseDetailScreen(exercise: exercise)
+            ExerciseDetailScreen(exercise: exercise )
         }
     }
 }
