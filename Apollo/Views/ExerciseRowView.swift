@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct ExerciseCellView: View {
+struct ExerciseRowView: View {
     var exercise: Exercise
     @Environment(\.modelContext) private var context
     
@@ -43,7 +43,7 @@ struct ExerciseCellView: View {
 private struct PreviewExerciseCellView: View {
     @Query private var exercises:[Exercise]
     var body: some View {
-        ExerciseCellView(exercise: exercises[0])
+        ExerciseRowView(exercise: exercises[0])
     }
 }
 

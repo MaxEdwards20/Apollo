@@ -28,7 +28,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             VStack {
-                ExerciseView(exercises: exercises)
+                ExerciseList(exercises: exercises)
                     .navigationTitle("Your Exercises")
             }
             .sheet(isPresented: $isPresented, content: {
