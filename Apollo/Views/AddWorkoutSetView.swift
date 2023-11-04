@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddWorkoutSetView: View {
     var exercise: Exercise
@@ -34,7 +35,7 @@ struct AddWorkoutSetView: View {
    
     var body: some View{
         VStack {
-            Text("Feeling Apollo Strong").font(.largeTitle)
+            Text("Apollo Strong").font(.largeTitle)
             Image(systemName: "sun.dust")
             List{
                 // Weight
@@ -45,19 +46,19 @@ struct AddWorkoutSetView: View {
                     }
                     HStack {
                         Text("45 lbs: ")
-                        Stepper("\(fortyFive)", value: $fortyFive, in:0...10)
+                        Stepper("\(fortyFive)", value: $fortyFive, in:0...30)
                     }.onChange(of: fortyFive){calculateFinalWeight()}
                     HStack {
                         Text("25 lbs: ")
-                        Stepper("\(twentyFive)", value: $twentyFive, in:0...10)
+                        Stepper("\(twentyFive)", value: $twentyFive, in:0...30)
                     }.onChange(of: twentyFive){calculateFinalWeight()}
                     HStack {
                         Text("10 lbs: ")
-                        Stepper("\(ten)", value: $ten    , in:0...10)
+                        Stepper("\(ten)", value: $ten    , in:0...30)
                     }.onChange(of: ten){calculateFinalWeight()}
                     HStack {
                         Text("5 lbs: ")
-                        Stepper("\(five)", value: $five, in:0...10)
+                        Stepper("\(five)", value: $five, in:0...30)
                     }.onChange(of: five){calculateFinalWeight()}
                     HStack {
                         Text("Adjust by 1 lb ")
@@ -73,7 +74,7 @@ struct AddWorkoutSetView: View {
                 Section {
                     HStack {
                         Text("Repetitions: ")
-                        Stepper("\(numberReps)", value: $numberReps, in:1...30)
+                        Stepper("\(numberReps)", value: $numberReps, in:1...50)
                     }
                 }
                 Button("Save"){
@@ -87,7 +88,16 @@ struct AddWorkoutSetView: View {
     }
 }
 
-//#Preview {
-//    AddWorkoutSetView(exercise: SampleExercises.contents[0], isShowingAddSets: .constant(true))
-//            .modelContainer(previewContainer)
-//}
+
+private struct PreviewAddWorkoutSetView: View {
+    @Query private var exercises: [Exercise] // one source of truth
+    var body: some View {
+        AddWorkoutSetView(exercise: exercises[0], isShowingAddSets: .constant(true))
+    }
+}
+
+#Preview {
+    PreviewAddWorkoutSetView()
+        .modelContainer(previewContainer)
+}
+

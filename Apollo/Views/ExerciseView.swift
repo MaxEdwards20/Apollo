@@ -18,8 +18,6 @@ struct ExerciseView: View {
             context.delete(exercise)
         }
     }
-    // TODO: Add Most recent set to the exercise view
-    
     var body: some View {
         List {
             ForEach(exercises, id: \.id) { exercise in
@@ -42,13 +40,23 @@ struct ExerciseView: View {
                     }
                 }
             }.onDelete(perform: deleteExercise)
-        }.navigationDestination(for: Exercise.self) { exercise in
+        }.listStyle(.insetGrouped)
+            .navigationDestination(for: Exercise.self) { exercise in
             ExerciseDetailScreen(exercise: exercise )
+        
         }
     }
 }
 
+// Create a screen preview
+private struct PreviewExerciseView: View {
+    @Query private var exercises: [Exercise] // one source of truth
+    var body: some View {
+        ExerciseView(exercises: exercises)
+    }
+}
+
 #Preview {
-    ExerciseView(exercises: SampleExercises.contents)
+    PreviewExerciseView()
         .modelContainer(previewContainer)
 }

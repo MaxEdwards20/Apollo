@@ -12,13 +12,11 @@ import SwiftData
 
 // Article with explanation here
 // https://www.hackingwithswift.com/quick-start/swiftdata/how-to-use-swiftdata-in-swiftui-previews
+
 @MainActor
  let previewContainer: ModelContainer = {
     do {
-        let container = try ModelContainer(
-            for: Exercise.self,
-            configurations: ModelConfiguration(isStoredInMemoryOnly: true)
-        )
+        let container = try ModelContainer(for: Exercise.self, WorkoutSet.self)
         let modelContext = container.mainContext
         if try modelContext.fetch(FetchDescriptor<Exercise>()).isEmpty {
             SampleExercises.contents.forEach { container.mainContext.insert($0) }

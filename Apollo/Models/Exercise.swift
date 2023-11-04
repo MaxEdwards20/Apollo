@@ -35,6 +35,8 @@ final class Exercise: Identifiable, CustomStringConvertible {
         self.history = []
     }
     
+    
+    
     static func delete(_ e: Exercise){
         if let context = e.modelContext{
             context.delete(e)

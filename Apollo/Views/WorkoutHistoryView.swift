@@ -8,9 +8,10 @@
 import SwiftUI
 import SwiftData
 
-// TODO: Add a duplicate function to add another set of the same weights and reps
 // TODO: Make history items clickable to edit them
 // TODO: Group History By day, week, month, and year
+// TODO: Add a graph that shows max weights over time
+// TODO: Add a graph that shows total weight over time
 
 struct WorkoutHistoryView: View {
     var exercise: Exercise
@@ -33,7 +34,7 @@ struct WorkoutHistoryView: View {
     
     var body: some View {
         VStack{
-            Text("\(exercise.name) History")
+            Text("History")
                 .font(.title3)
             Button("Add a Set"){
                 isShowingAddSets = true
@@ -43,7 +44,8 @@ struct WorkoutHistoryView: View {
                         .padding()
                 })
             List {
-                ForEach(exercise.history, id: \.id) { workoutSet in
+                // Sort the list by the time stamps
+                ForEach(exercise.history.sorted(by: {$0.timestamp < $1.timestamp}).reversed()) { workoutSet in
                     VStack(alignment: .leading){
                         Text("Date \(workoutSet.timestamp.formatted(date: .numeric, time: .omitted))")
                         Text("Reps: \(workoutSet.reps)")
@@ -61,14 +63,14 @@ struct WorkoutHistoryView: View {
     }
 }
 
-//private struct PreviewWorkoutHistoryView: View {
-//    @Query private var exercises: [Exercise] // one source of truth
-//    var body: some View {
-//        WorkoutHistoryView(exercise: exercises[0])
-//    }
-//}
-//
-//#Preview {
-//    PreviewWorkoutHistoryView()
-//        .modelContainer(previewContainer)
-//}
+private struct PreviewWorkoutHistoryView: View {
+    @Query private var exercises: [Exercise] // one source of truth
+    var body: some View {
+        WorkoutHistoryView(exercise: exercises[0])
+    }
+}
+
+#Preview {
+    PreviewWorkoutHistoryView()
+        .modelContainer(previewContainer)
+}
