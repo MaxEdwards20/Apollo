@@ -21,7 +21,9 @@ struct WorkoutHistoryView: View {
     private func deleteSet(indexSet: IndexSet){
         // TODO: Create a live update on exerciseDetail when I delete a set here, in the history view
         withAnimation {
-            indexSet.map {exercise.history[$0]}.forEach {context.delete($0)}
+            indexSet.map {exercise.history[$0]}.forEach {
+                context.delete($0)
+            }
         }
     }
     

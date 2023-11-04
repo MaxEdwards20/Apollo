@@ -10,6 +10,7 @@ import SwiftData
 
 struct AddWorkoutSetView: View {
     var exercise: Exercise
+    @Environment(\.modelContext) private var context
     @State private var numberReps:Int = 1
     @State private var fortyFive:Int = 0
     @State private var twentyFive:Int = 0
@@ -18,7 +19,9 @@ struct AddWorkoutSetView: View {
     @State private var weight:Int = 0
     @State private var addBarbell:Bool = false
     @Binding var isShowingAddSets:Bool
-
+    
+    
+    
     private func calculateFinalWeight(){
         let calcWeight = ((fortyFive * 45) + (twentyFive * 25) + (ten  * 10) + (five * 5))
         weight = addBarbell ? calcWeight + 45 : calcWeight
@@ -32,7 +35,7 @@ struct AddWorkoutSetView: View {
         five = 0
         addBarbell = false
     }
-   
+    
     var body: some View{
         VStack {
             Text("Apollo Strong").font(.largeTitle)
@@ -78,10 +81,13 @@ struct AddWorkoutSetView: View {
                     }
                 }
                 Button("Save"){
-                    // Test to see whether this is working
-                    let workoutSet = WorkoutSet(weight: weight, reps: numberReps, exercise: exercise)
-                    exercise.history.append(workoutSet)
-                    isShowingAddSets = false // close the window
+                    withAnimation{
+                        // Test to see whether this is working
+                        let workoutSet = WorkoutSet(weight: weight, reps: numberReps, exercise: exercise) // Create it in context
+//                        context.insert(workoutSet)
+                        exercise.history.append(workoutSet) // Saves it for the UI
+                        isShowingAddSets = false // close the window
+                    }
                 }
             }
         }

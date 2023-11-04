@@ -20,7 +20,7 @@ import SwiftData
         let configuration = (ModelConfiguration(isStoredInMemoryOnly: true))
         let modelContext = container.mainContext
         if try modelContext.fetch(FetchDescriptor<Exercise>()).isEmpty {
-            SampleExercises().contents.forEach { container.mainContext.insert($0) }
+            SampleData().contents.forEach { container.mainContext.insert($0) }
         }
         return container
     } catch {

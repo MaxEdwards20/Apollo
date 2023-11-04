@@ -29,10 +29,35 @@ struct ContentView: View {
                         Image(systemName: "plus")
                     }
                 }
+                ToolbarItem(placement: .topBarLeading){
+                    Button {
+                        let content = SampleData().contents
+                        for i in content {
+                            context.insert(i)
+                        }
+                        for i in content {
+                            SampleData.generateSet(exercise: i)
+                            SampleData.generateSet(exercise: i)
+                            SampleData.generateSet(exercise: i)
+                        }
+                        
+                    } label : {
+                        Text("Dummy Batch")
+                    }
+                }
+                ToolbarItem(placement: .topBarLeading){
+                    Button {
+                        for i in exercises {
+                            context.delete(i)
+                        }
+                    } label : {
+                        Text("Clear Data")
+                    }
+                }
             }
         }
     }
-
+    
 }
 
 #Preview {

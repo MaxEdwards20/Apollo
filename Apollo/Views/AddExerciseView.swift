@@ -25,13 +25,8 @@ struct AddExerciseView: View {
                     Text("Exercise: ")
                     TextField("Name", text: $name)
                 }
-//                HStack{
-//                    Text("Personal Record: ")
-//                    TextField("Max Weight", value: $maxWeight, format: .number)
-//                }
                 ExerciseGroupPicker(selectedOption: $group)
             }
-            
             .navigationTitle("Add Exercise")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing){

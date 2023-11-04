@@ -9,48 +9,44 @@ import SwiftUI
 import SwiftData
 
 struct ExerciseView: View {
-    var exercises: [Exercise] // pased from the query in content view
+    var exercises: [Exercise] // passed from the query in content view
     @Environment(\.modelContext) private var context
     
-    private func deleteExercise(indexSet: IndexSet){
-        indexSet.forEach{index in
-            let exercise = exercises[index]
-            context.delete(exercise)
-        }
+    var groupedExercises: [Exercise.ExerciseGroup: [Exercise]] {
+        Dictionary(grouping: exercises, by: {$0.group})
     }
+    
+    // Create groups based on each type
     var body: some View {
         List {
-            ForEach(exercises, id: \.id) { exercise in
-                NavigationLink(value: exercise){
-                    HStack{
-                        // Seems to be limit on only have 2 text fields
-                        VStack(alignment: .leading){
-                            Text(exercise.name)
-                                .font(.title2)
-                            Text("\(exercise.group.name)")
-                                .font(.title3)
-                            
-                        }
-                        Spacer()
-                        if exercise.history.count > 0 {
-                            Text("Last Set: \(exercise.history.last!.weight) x \(exercise.history.last!.reps)")
-                        } else {
-                            Text("Get Started")
+            ForEach(groupedExercises.keys.sorted{$0.name < $1.name}, id: \.self) { group in
+                Section(header: Text(group.name)) {
+                    ForEach(groupedExercises[group]!, id: \.id) { exercise in
+                        NavigationLink(destination: ExerciseDetailScreen(exercise: exercise)) {
+                            ExerciseCellView(exercise: exercise)
                         }
                     }
                 }
-            }.onDelete(perform: deleteExercise)
-        }.listStyle(.insetGrouped)
-            .navigationDestination(for: Exercise.self) { exercise in
-            ExerciseDetailScreen(exercise: exercise )
-        
+            }
         }
     }
+    
+//    var body: some View {
+//        List {
+//            ForEach(exercises) { exercise in
+//                NavigationLink(value: exercise){
+//                    ExerciseCellView(exercise: exercise)
+//                }
+//            }.onDelete(perform: deleteExercise)
+//        }.navigationDestination(for: Exercise.self) { exercise in
+//            ExerciseDetailScreen(exercise: exercise )
+//        }
+//    }
 }
 
-// Create a screen preview
+
 private struct PreviewExerciseView: View {
-    @Query private var exercises: [Exercise] // one source of truth
+    @Query private var exercises: [Exercise]
     var body: some View {
         ExerciseView(exercises: exercises)
     }

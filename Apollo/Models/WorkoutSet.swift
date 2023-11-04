@@ -20,7 +20,7 @@ final class WorkoutSet: Identifiable, CustomStringConvertible {
     }
     var exercise: Exercise?
     
-    init(weight: Int, reps: Int, notes: String = "", exercise: Exercise? = nil) {
+    init(weight: Int, reps: Int, notes: String = "", exercise: Exercise) {
         self.id = UUID()
         self.timestamp = Date.now
         self.weight = weight
@@ -37,7 +37,7 @@ final class WorkoutSet: Identifiable, CustomStringConvertible {
     }
     
     var description: String {
-        return "Weight: \(self.weight) Reps: \(self.reps) Exercise: \(String(describing: self.exercise?.name))"
+        return "Weight: \(self.weight) Reps: \(self.reps) Exercise: \(String(describing: self.exercise!.name))"
     }
 }
 

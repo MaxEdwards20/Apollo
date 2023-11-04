@@ -18,14 +18,14 @@ final class Exercise: Identifiable, CustomStringConvertible {
         computeBestSet()
     }
     // Exercise which holds many workout sets
-    @Relationship(deleteRule: .cascade, inverse: \WorkoutSet.exercise) var history : [WorkoutSet]
+    var history : [WorkoutSet]
     // Max weight ever lifted for this exercise
     var maxWeight:Int {
         computeMaxWeight()
     }
     
     var description: String {
-        return "Name: \(self.name) History: \(self.history) "
+        return "Name: \(self.name)"
     }
     
     init( name: String, group:ExerciseGroup) {
@@ -34,8 +34,6 @@ final class Exercise: Identifiable, CustomStringConvertible {
         self.group = group
         self.history = []
     }
-    
-    
     
     static func delete(_ e: Exercise){
         if let context = e.modelContext{
