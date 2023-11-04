@@ -13,12 +13,12 @@ import SwiftData
 // TODO: Group History By day, week, month, and year
 
 struct WorkoutHistoryView: View {
-    @Bindable var exercise: Exercise
+    var exercise: Exercise
     @Environment(\.modelContext) private var context// We need this to be able to delete items
     @State private var isShowingAddSets = false
     
     private func deleteSet(indexSet: IndexSet){
-        // TODO: Figure out how to get exercisedetail screen to update when I delete workout sets
+        // TODO: Create a live update on exerciseDetail when I delete a set here, in the history view
         withAnimation {
             indexSet.map {exercise.history[$0]}.forEach {context.delete($0)}
         }
@@ -44,7 +44,6 @@ struct WorkoutHistoryView: View {
                 })
             List {
                 ForEach(exercise.history, id: \.id) { workoutSet in
-                    // Seems to be limit on only have 2 text fields
                     VStack(alignment: .leading){
                         Text("Date \(workoutSet.timestamp.formatted(date: .numeric, time: .omitted))")
                         Text("Reps: \(workoutSet.reps)")

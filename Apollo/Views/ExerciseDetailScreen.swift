@@ -18,11 +18,8 @@ struct ExerciseDetailScreen: View {
     var body: some View {
         VStack {
             Text(exercise.name).font(.title)
-            Text("Personal Record: \(exercise.computeMaxWeight())")
+            Text("Personal Record: \(exercise.maxWeight)")
             Text("Body Group: \(exercise.group.name)")
-        }
-        .onAppear {
-            maxWeight = exercise.computeMaxWeight()
         }
         Divider()
         WorkoutHistoryView(exercise: exercise)

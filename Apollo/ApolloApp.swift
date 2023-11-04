@@ -13,7 +13,7 @@ struct ApolloApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: [Exercise.self, WorkoutSet.self])
+                .modelContainer(for: [Exercise.self, WorkoutSet.self]) // context where all data is stored
         }
         
     }

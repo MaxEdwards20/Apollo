@@ -11,18 +11,26 @@ import SwiftData
 @Model
 final class Exercise: Identifiable, CustomStringConvertible {
     var id: UUID
-    var name:String // Makes sure we only have 1 exercise
-    var maxWeight:Int // Max weight ever lifted for this exercise
+    var name:String
     var group:ExerciseGroup
-    var bestSet:WorkoutSet? // max total weight done in a set (weight * reps)
-    
+    // max total weight done in a set (weight * reps)
+    var bestSet:WorkoutSet? {
+        computeBestSet()
+    }
     // Exercise which holds many workout sets
     @Relationship(deleteRule: .cascade, inverse: \WorkoutSet.exercise) var history : [WorkoutSet]
+    // Max weight ever lifted for this exercise
+    var maxWeight:Int {
+        computeMaxWeight()
+    }
     
-    init( name: String, maxWeight: Int = 0, group:ExerciseGroup) {
+    var description: String {
+        return "Name: \(self.name) History: \(self.history) "
+    }
+    
+    init( name: String, group:ExerciseGroup) {
         self.id = UUID()
         self.name = name.lowercased().capitalized // clean up the name before capitalizing it for looks
-        self.maxWeight = maxWeight
         self.group = group
         self.history = []
     }
@@ -32,35 +40,7 @@ final class Exercise: Identifiable, CustomStringConvertible {
             context.delete(e)
         }
     }
-    
-    func addWorkoutSet(s: WorkoutSet){
-        self.history.append(s)
-        self.computeMaxWeight() // adjust for the new values
-    }
-    
-    func deleteWorkoutSet(s: WorkoutSet){
-        if let context = s.modelContext {
-            context.delete(s)
-        }
-        self.computeMaxWeight()
-    }
-    
-    
-    func computeMaxWeight() -> Int {
-        var bestWeight:Int = 0;
-        for i in self.history{
-            if i.weight > bestWeight {
-                bestWeight = i.weight
-            }
-        }
-        self.maxWeight = bestWeight
-        return bestWeight
-    }
-    
-    var description: String {
-        return "Name: \(self.name) History: \(self.history) "
-    }
-    
+        
     // https://developer.apple.com/forums/thread/731416
     public enum ExerciseGroup: String, Codable, CaseIterable, Identifiable {
         case legs
@@ -74,8 +54,32 @@ final class Exercise: Identifiable, CustomStringConvertible {
             rawValue.capitalized
         }
         
-        var id: String {
+        public var id: String {
             name
+        }
+    }
+    
+    
+    private func computeMaxWeight() -> Int {
+        var bestWeight:Int = 0;
+        for i in self.history{
+            if i.weight > bestWeight {
+                bestWeight = i.weight
+            }
+        }
+        return bestWeight
+    }
+    
+    private func computeBestSet() -> WorkoutSet? {
+        if self.history.count == 0 {return nil}
+        else {
+            var bestSet:WorkoutSet = self.history[0]
+            for i in self.history {
+                if i.totalWeight > bestSet.totalWeight {
+                    bestSet = i
+                }
+            }
+            return bestSet
         }
     }
 }

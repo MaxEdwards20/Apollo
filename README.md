@@ -5,6 +5,7 @@
 This is an application for becoming fitter and stronger
 
 ## Features To Create
+
 * Weight Tracking
 * Exercise History with weight, sets, and dates
 * Workout history with combinations of exercises and their sets

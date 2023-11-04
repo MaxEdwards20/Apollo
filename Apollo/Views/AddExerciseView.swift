@@ -36,7 +36,7 @@ struct AddExerciseView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing){
                     Button("Save") {
-                        let exercise = Exercise(name: name, maxWeight: maxWeight, group: group)
+                        let exercise = Exercise(name: name,  group: group)
                         context.insert(exercise) // saves the item
                         dismiss()
                     }.disabled(name.isEmpty)

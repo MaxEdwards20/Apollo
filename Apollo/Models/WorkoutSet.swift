@@ -15,7 +15,9 @@ final class WorkoutSet: Identifiable, CustomStringConvertible {
     var weight:Int
     var reps: Int
     var notes:String
-    var totalWeight:Int
+    var totalWeight:Int {
+        weight * reps
+    }
     var exercise: Exercise?
     
     init(weight: Int, reps: Int, notes: String = "", exercise: Exercise? = nil) {
@@ -24,7 +26,6 @@ final class WorkoutSet: Identifiable, CustomStringConvertible {
         self.weight = weight
         self.reps = reps
         self.notes = notes
-        self.totalWeight = Int(weight) * reps
         self.exercise = exercise
     }
     

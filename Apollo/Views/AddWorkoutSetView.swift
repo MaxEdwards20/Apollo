@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddWorkoutSetView: View {
-    @Bindable var exercise: Exercise
+    var exercise: Exercise
     @State private var numberReps:Int = 1
     @State private var fortyFive:Int = 0
     @State private var twentyFive:Int = 0
@@ -16,10 +16,8 @@ struct AddWorkoutSetView: View {
     @State private var five:Int = 0
     @State private var weight:Int = 0
     @State private var addBarbell:Bool = false
-    
     @Binding var isShowingAddSets:Bool
 
-    
     private func calculateFinalWeight(){
         let calcWeight = ((fortyFive * 45) + (twentyFive * 25) + (ten  * 10) + (five * 5))
         weight = addBarbell ? calcWeight + 45 : calcWeight
@@ -34,7 +32,6 @@ struct AddWorkoutSetView: View {
         addBarbell = false
     }
    
-    
     var body: some View{
         VStack {
             Text("Feeling Apollo Strong").font(.largeTitle)
@@ -80,17 +77,17 @@ struct AddWorkoutSetView: View {
                     }
                 }
                 Button("Save"){
+                    // Test to see whether this is working
                     let workoutSet = WorkoutSet(weight: weight, reps: numberReps, exercise: exercise)
-                    exercise.addWorkoutSet(s: workoutSet)
+                    exercise.history.append(workoutSet)
                     isShowingAddSets = false // close the window
                 }
             }
-
         }
     }
 }
 
-#Preview {
-    AddWorkoutSetView(exercise: SampleExercises.contents[0], isShowingAddSets: .constant(true))
-    //        .modelContainer(previewContainer)
-}
+//#Preview {
+//    AddWorkoutSetView(exercise: SampleExercises.contents[0], isShowingAddSets: .constant(true))
+//            .modelContainer(previewContainer)
+//}

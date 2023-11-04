@@ -31,6 +31,13 @@ struct ExerciseView: View {
                                 .font(.title2)
                             Text("\(exercise.group.name)")
                                 .font(.title3)
+                            
+                        }
+                        Spacer()
+                        if exercise.history.count > 0 {
+                            Text("Last Set: \(exercise.history.last!.weight) x \(exercise.history.last!.reps)")
+                        } else {
+                            Text("Get Started")
                         }
                     }
                 }
@@ -41,7 +48,6 @@ struct ExerciseView: View {
     }
 }
 
-// Not sure how to get this preview to work
 #Preview {
     ExerciseView(exercises: SampleExercises.contents)
         .modelContainer(previewContainer)
