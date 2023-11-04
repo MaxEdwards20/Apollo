@@ -21,7 +21,7 @@ struct ExerciseDetailScreen: View {
             Text("Body Group: \(exercise.group.name)")
         }
         Divider()
-        WorkoutHistoryView(exercise: exercise)
+        WorkoutSetList(exercise: exercise)
     }
 }
 

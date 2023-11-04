@@ -29,13 +29,6 @@ final class WorkoutSet: Identifiable, CustomStringConvertible {
         self.exercise = exercise
     }
     
-    // Problem is that when I delete one of these, it does not update for the exercise
-    static func delete(_ workoutSet: WorkoutSet){
-        if let context = workoutSet.modelContext {
-            context.delete(workoutSet)
-        }
-    }
-    
     var description: String {
         return "Weight: \(self.weight) Reps: \(self.reps) Exercise: \(String(describing: self.exercise!.name))"
     }
