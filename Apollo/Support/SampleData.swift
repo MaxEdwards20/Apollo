@@ -25,8 +25,6 @@ final class SampleData {
         return [bench, squat, deadlift, curl, pullup, run]
     }
     
-
-    
     static func generateSet(exercise: Exercise) -> WorkoutSet {
         return WorkoutSet(weight: Int.random(in: 50...300), reps: Int.random(in: 1...30), exercise: exercise)
     }

@@ -26,7 +26,7 @@ struct ExerciseCellView: View {
             }
             Spacer()
             if exercise.history.count > 0 {
-                Text("Last Set: \(exercise.history.last!.weight) x \(exercise.history.last!.reps)")
+                Text("Last Set: \(exercise.history.last!.weight) x \(exercise.history.last!.reps)").onAppear()
             } else {
                 Text("Get Started")
             }

@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+// TODO: Add some error handling and update models to only accept 1 exercise of the same name
+
 struct AddExerciseView: View {
     
     @State private var name = ""

@@ -12,6 +12,19 @@ struct ContentView: View {
     @State private var isPresented: Bool = false
     @Query private var exercises: [Exercise] // one source of truth
     @Environment(\.modelContext) private var context
+    
+    private func generateData(){
+        let content = SampleData().contents
+        for i in content {
+            context.insert(i)
+        }
+        for i in content {
+            _ = SampleData.generateSet(exercise: i)
+            _ = SampleData.generateSet(exercise: i)
+            _ = SampleData.generateSet(exercise: i)
+        }
+    }
+    
     var body: some View {
         NavigationStack{
             VStack {
@@ -31,16 +44,7 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: .topBarLeading){
                     Button {
-                        let content = SampleData().contents
-                        for i in content {
-                            context.insert(i)
-                        }
-                        for i in content {
-                            SampleData.generateSet(exercise: i)
-                            SampleData.generateSet(exercise: i)
-                            SampleData.generateSet(exercise: i)
-                        }
-                        
+                        generateData()
                     } label : {
                         Text("Dummy Batch")
                     }

@@ -58,8 +58,14 @@ struct WorkoutHistoryView: View {
                         } label: {
                             Label("Duplicate", systemImage: "plus.circle")
                         }
+                    }.swipeActions(edge: .trailing){
+                        Button(role: .destructive) {
+                            context.delete(workoutSet)
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
                     }
-                }.onDelete(perform: deleteSet)
+                }
             }
         }
     }

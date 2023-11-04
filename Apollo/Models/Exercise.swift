@@ -34,13 +34,7 @@ final class Exercise: Identifiable, CustomStringConvertible {
         self.group = group
         self.history = []
     }
-    
-    static func delete(_ e: Exercise){
-        if let context = e.modelContext{
-            context.delete(e)
-        }
-    }
-        
+            
     // https://developer.apple.com/forums/thread/731416
     public enum ExerciseGroup: String, Codable, CaseIterable, Identifiable {
         case legs
