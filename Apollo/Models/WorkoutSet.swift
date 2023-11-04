@@ -20,9 +20,9 @@ final class WorkoutSet: Identifiable, CustomStringConvertible {
     }
     var exercise: Exercise?
     
-    init(weight: Int, reps: Int, notes: String = "", exercise: Exercise) {
+    init(weight: Int, reps: Int, notes: String = "", exercise: Exercise, timestamp:Date = Date.now) {
         self.id = UUID()
-        self.timestamp = Date.now
+        self.timestamp = timestamp
         self.weight = weight
         self.reps = reps
         self.notes = notes

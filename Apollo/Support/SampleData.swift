@@ -26,6 +26,24 @@ final class SampleData {
     }
     
     static func generateSet(exercise: Exercise) -> WorkoutSet {
-        return WorkoutSet(weight: Int.random(in: 50...300), reps: Int.random(in: 1...30), exercise: exercise)
+        // Determine a random time interval within the last week, month, or year
+        let currentDate = Date()
+        let timeInterval: TimeInterval
+        switch Int.random(in: 0...2) {
+            case 0:
+                // Within the last week (604800 seconds)
+                timeInterval = TimeInterval.random(in: 0...604800)
+            case 1:
+                // Within the last month (2592000 seconds)
+                timeInterval = TimeInterval.random(in: 604801...2592000)
+            default:
+                // Within the last year (31536000 seconds)
+                timeInterval = TimeInterval.random(in: 2592001...31536000)
+        }
+        
+        let lowerBound = currentDate.addingTimeInterval(-timeInterval)
+        let randomTimestamp = Date(timeInterval: TimeInterval.random(in: lowerBound.timeIntervalSinceReferenceDate...currentDate.timeIntervalSinceReferenceDate), since: Date(timeIntervalSinceReferenceDate: 0))
+        
+        return WorkoutSet(weight: Int.random(in: 50...300), reps: Int.random(in: 1...30), exercise: exercise, timestamp: randomTimestamp)
     }
 }
