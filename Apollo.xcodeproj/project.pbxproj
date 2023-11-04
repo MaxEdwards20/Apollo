@@ -101,7 +101,6 @@
 			children = (
 				CF6BDD942AF43758009B9F0E /* Exercise.swift */,
 				CF6BDD962AF437C6009B9F0E /* WorkoutSet.swift */,
-				CF6BDD9C2AF47F95009B9F0E /* SampleExercises.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -122,6 +121,7 @@
 		CF6BDD9E2AF48066009B9F0E /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				CF6BDD9C2AF47F95009B9F0E /* SampleExercises.swift */,
 				CF6BDD9F2AF480A0009B9F0E /* PreviewSampleData.swift */,
 			);
 			path = Support;
