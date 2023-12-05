@@ -11,6 +11,7 @@ import SwiftData
 struct AddWorkoutSetView: View {
     var exercise: Exercise
     @Environment(\.modelContext) private var context
+    @Environment(\.dismiss) private var dismiss
     @State private var numberReps:Int = 1
     @State private var fortyFive:Int = 0
     @State private var twentyFive:Int = 0
@@ -19,8 +20,6 @@ struct AddWorkoutSetView: View {
     @State private var weight:Int = 0
     @State private var addBarbell:Bool = false
     @Binding var isShowingAddSets:Bool
-    
-    
     
     private func calculateFinalWeight(){
         let calcWeight = ((fortyFive * 45) + (twentyFive * 25) + (ten  * 10) + (five * 5))
@@ -37,59 +36,67 @@ struct AddWorkoutSetView: View {
     }
     
     var body: some View{
-        VStack {
-            Text("Apollo Strong").font(.largeTitle)
-            Image(systemName: "sun.dust")
-            List{
-                // Weight
-                Section {
-                    Text("Weight: \(Int(weight))")
-                    HStack {
-                        Toggle("Barbell", isOn: $addBarbell).onChange(of: addBarbell){calculateFinalWeight()}
+        NavigationStack {
+            VStack {
+                Text("Apollo Strong").font(.largeTitle)
+                Image(systemName: "sun.dust")
+                List{
+                    // Weight
+                    Section {
+                        Text("Weight: \(Int(weight))")
+                        HStack {
+                            Toggle("Barbell", isOn: $addBarbell).onChange(of: addBarbell){calculateFinalWeight()}
+                        }
+                        HStack {
+                            Text("45 lbs: ")
+                            Stepper("\(fortyFive)", value: $fortyFive, in:0...30)
+                        }.onChange(of: fortyFive){calculateFinalWeight()}
+                        HStack {
+                            Text("25 lbs: ")
+                            Stepper("\(twentyFive)", value: $twentyFive, in:0...30)
+                        }.onChange(of: twentyFive){calculateFinalWeight()}
+                        HStack {
+                            Text("10 lbs: ")
+                            Stepper("\(ten)", value: $ten    , in:0...30)
+                        }.onChange(of: ten){calculateFinalWeight()}
+                        HStack {
+                            Text("5 lbs: ")
+                            Stepper("\(five)", value: $five, in:0...30)
+                        }.onChange(of: five){calculateFinalWeight()}
+                        HStack {
+                            Text("Adjust by 1 lb ")
+                            Stepper("", value: $weight, in:0...1000)
+                        }
+                        Button("Reset") {
+                            withAnimation{
+                                resetWeights()
+                            }
+                        }
                     }
-                    HStack {
-                        Text("45 lbs: ")
-                        Stepper("\(fortyFive)", value: $fortyFive, in:0...30)
-                    }.onChange(of: fortyFive){calculateFinalWeight()}
-                    HStack {
-                        Text("25 lbs: ")
-                        Stepper("\(twentyFive)", value: $twentyFive, in:0...30)
-                    }.onChange(of: twentyFive){calculateFinalWeight()}
-                    HStack {
-                        Text("10 lbs: ")
-                        Stepper("\(ten)", value: $ten    , in:0...30)
-                    }.onChange(of: ten){calculateFinalWeight()}
-                    HStack {
-                        Text("5 lbs: ")
-                        Stepper("\(five)", value: $five, in:0...30)
-                    }.onChange(of: five){calculateFinalWeight()}
-                    HStack {
-                        Text("Adjust by 1 lb ")
-                        Stepper("", value: $weight, in:0...1000)
+                    // Reps
+                    Section {
+                        HStack {
+                            Text("Repetitions: ")
+                            Stepper("\(numberReps)", value: $numberReps, in:1...50)
+                        }
                     }
-                    Button("Reset") {
+                    Button("Save"){
                         withAnimation{
-                            resetWeights()
+                            // Test to see whether this is working
+                            let workoutSet = WorkoutSet(weight: weight, reps: numberReps, exercise: exercise) // Create it in context
+    //                        context.insert(workoutSet)
+                            exercise.history.append(workoutSet) // Saves it for the UI
+                            isShowingAddSets = false // close the window
                         }
                     }
                 }
-                // Reps
-                Section {
-                    HStack {
-                        Text("Repetitions: ")
-                        Stepper("\(numberReps)", value: $numberReps, in:1...50)
+            }.toolbar{
+                ToolbarItem(placement: .topBarLeading){
+                    Button("Close"){
+                        dismiss()
                     }
                 }
-                Button("Save"){
-                    withAnimation{
-                        // Test to see whether this is working
-                        let workoutSet = WorkoutSet(weight: weight, reps: numberReps, exercise: exercise) // Create it in context
-//                        context.insert(workoutSet)
-                        exercise.history.append(workoutSet) // Saves it for the UI
-                        isShowingAddSets = false // close the window
-                    }
-                }
-            }
+        }
         }
     }
 }

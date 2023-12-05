@@ -21,8 +21,7 @@ struct WorkoutSetRowView: View {
     var body: some View {
         VStack(alignment: .leading){
             Text("Date \(workoutSet.timestamp.formatted(date: .numeric, time: .omitted))")
-            Text("Reps: \(workoutSet.reps)")
-            Text("Weight: \(Int(workoutSet.weight))")
+            Text("\(Int(workoutSet.weight)) x \(Int(workoutSet.reps))")
         }.swipeActions(edge: .leading){
             Button {
                 duplicateSet(workoutSet: workoutSet)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0611A72B1FC54900D3E354 /* WorkoutSetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0611A62B1FC54900D3E354 /* WorkoutSetDetail.swift */; };
 		CF6BDD822AF435D8009B9F0E /* ApolloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD812AF435D8009B9F0E /* ApolloApp.swift */; };
 		CF6BDD842AF435D8009B9F0E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD832AF435D8009B9F0E /* ContentView.swift */; };
 		CF6BDD882AF435DA009B9F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6BDD872AF435DA009B9F0E /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF0611A62B1FC54900D3E354 /* WorkoutSetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSetDetail.swift; sourceTree = "<group>"; };
 		CF6BDD7E2AF435D8009B9F0E /* Apollo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apollo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6BDD812AF435D8009B9F0E /* ApolloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloApp.swift; sourceTree = "<group>"; };
 		CF6BDD832AF435D8009B9F0E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				CF6BDDA32AF48943009B9F0E /* ExerciseDetailScreen.swift */,
 				CF6BDDAC2AF55556009B9F0E /* WorkoutSetList.swift */,
 				CF771D052AF6F68200AAA3CB /* WorkoutSetRowView.swift */,
+				CF0611A62B1FC54900D3E354 /* WorkoutSetDetail.swift */,
 				CF6BDDAA2AF54F2E009B9F0E /* AddWorkoutSetView.swift */,
 				CF6BDDA72AF494FA009B9F0E /* ExerciseGroupPicker.swift */,
 			);
@@ -206,6 +209,7 @@
 				CF6BDDA22AF484B8009B9F0E /* ExerciseList.swift in Sources */,
 				CF771D022AF6B91200AAA3CB /* ExerciseRowView.swift in Sources */,
 				CF6BDD972AF437C6009B9F0E /* WorkoutSet.swift in Sources */,
+				CF0611A72B1FC54900D3E354 /* WorkoutSetDetail.swift in Sources */,
 				CF6BDD842AF435D8009B9F0E /* ContentView.swift in Sources */,
 				CF6BDDA82AF494FA009B9F0E /* ExerciseGroupPicker.swift in Sources */,
 				CF6BDDA42AF48943009B9F0E /* ExerciseDetailScreen.swift in Sources */,

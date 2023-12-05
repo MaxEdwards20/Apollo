@@ -11,7 +11,7 @@ import SwiftData
 // TODO: Add some error handling and update models to only accept 1 exercise of the same name
 
 struct AddExerciseView: View {
-    
+    // Initialize the state variables
     @State private var name = ""
     @State private var maxWeight:Int = 0
     @State private var group:Exercise.ExerciseGroup = Exercise.ExerciseGroup.abs

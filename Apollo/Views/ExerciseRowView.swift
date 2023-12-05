@@ -21,8 +21,6 @@ struct ExerciseRowView: View {
             VStack(alignment: .leading){
                 Text(exercise.name)
                     .font(.title2)
-                Text("\(exercise.group.name)")
-                    .font(.title3)
             }
             Spacer()
             if exercise.history.count > 0 {

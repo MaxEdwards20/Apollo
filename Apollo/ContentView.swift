@@ -52,10 +52,12 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarLeading){
                     Button {
                         for i in exercises {
-                            context.delete(i)
+                            if i.name.lowercased().contains("test"){
+                                context.delete(i)
+                            }
                         }
                     } label : {
-                        Text("Clear Data")
+                        Text("Clear Dummy Data")
                     }
                 }
             }

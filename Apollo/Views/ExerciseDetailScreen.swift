@@ -14,11 +14,15 @@ struct ExerciseDetailScreen: View {
     @State var maxWeight = 0;
     // TODO: Add view differences. If we have history, then set all of the values to their approrpiate maxes. If not, use the default values
     // TODO: Add a timer 
+
     var body: some View {
         VStack {
-            Text(exercise.name).font(.title)
-            Text("Personal Record: \(exercise.maxWeight)")
-            Text("Body Group: \(exercise.group.name)")
+            Text(exercise.name).font(.largeTitle)
+            Text("Max Weight: \(exercise.maxWeight) lbs ").font(.title3)
+//            if (exercise.bestSet != nil){
+//                Text("Best Set: \(exercise.bestSet!.weight) x \(exercise.bestSet!.reps)")
+//            }
+//            Text("\(exercise.group.name)")
         }
         Divider()
         WorkoutSetList(exercise: exercise)

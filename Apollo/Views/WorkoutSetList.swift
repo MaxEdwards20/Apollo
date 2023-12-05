@@ -27,6 +27,7 @@ struct WorkoutSetList: View {
         var pastMonthSets: [WorkoutSet] = []
         var pastYearSets: [WorkoutSet] = []
         
+        // Put each set into the proper categorization
         for workoutSet in workoutSets {
             if calendar.isDateInToday(workoutSet.timestamp) {
                 todaySets.append(workoutSet)
@@ -39,6 +40,11 @@ struct WorkoutSetList: View {
             }
         }
         
+        // Sort the sets from most recent to last recent
+        for var l in [todaySets, thisWeekSets, pastMonthSets, pastYearSets]{
+            l.sort {$0.timestamp > $1.timestamp}
+        }
+        
         return (todaySets, thisWeekSets, pastMonthSets, pastYearSets)
     }
     
@@ -47,19 +53,15 @@ struct WorkoutSetList: View {
         VStack{
             Text("History")
                 .font(.title3)
-            Button("Add a Set"){
-                isShowingAddSets = true
-            }.font(.title2)
-                .popover(isPresented: $isShowingAddSets, content: {
-                    AddWorkoutSetView(exercise: exercise, isShowingAddSets: $isShowingAddSets)
-                        .padding()
-                })
+
         }
         List {
             if !categorizedSets.today.isEmpty{
                 Section(header: Text("Today")) {
                     ForEach(categorizedSets.today) { workoutSet in
-                        WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                        NavigationLink(destination: WorkoutSetDetail(workoutSet: workoutSet)){
+                            WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                        }
                     }
                 }
             }
@@ -67,26 +69,47 @@ struct WorkoutSetList: View {
             if !categorizedSets.thisWeek.isEmpty{
                 Section(header: Text("This Week")) {
                     ForEach(categorizedSets.thisWeek) { workoutSet in
-                        WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                        NavigationLink(destination: WorkoutSetDetail(workoutSet: workoutSet)){
+                            WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                        }
                     }
                 }
-            }
+            }// TODO: Make this a include the past 4 weeks. Right now it cuts off at the beginning of the month
             if !categorizedSets.pastMonth.isEmpty{
-                Section(header: Text("Past Month")) {
+                Section(header: Text("This Month")) {
                     ForEach(categorizedSets.pastMonth) { workoutSet in
-                        WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                        NavigationLink(destination: WorkoutSetDetail(workoutSet: workoutSet)){
+                            WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                        }
                     }
                 }
             }
             if !categorizedSets.pastYear.isEmpty{
                 Section(header: Text("Past Year")) {
                     ForEach(categorizedSets.pastYear) { workoutSet in
-                        WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                        NavigationLink(destination: WorkoutSetDetail(workoutSet: workoutSet)){
+                            WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                        }
                     }
                 }
             }
         }
-    }
+        // Make this a pill
+        HStack {
+            Button(action: {
+                isShowingAddSets = true
+            }) {
+                Text("Add a Set")
+                    .font(.title2)
+                    .padding()
+                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
+                    .foregroundColor(.white)
+            }.frame(maxWidth: .infinity)
+        }.popover(isPresented: $isShowingAddSets, content: {
+            AddWorkoutSetView(exercise: exercise, isShowingAddSets: $isShowingAddSets)
+                .padding()
+            }
+    )}
 }
 private struct PreviewWorkoutHistoryView: View {
     @Query private var exercises: [Exercise] // one source of truth
