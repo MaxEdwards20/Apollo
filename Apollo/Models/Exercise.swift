@@ -35,6 +35,17 @@ class Exercise: CustomStringConvertible {
         self.group = group
         self.history = []
     }
+    
+    public func getMostRecentSet() -> WorkoutSet? {
+        if (self.history == nil) {return nil}
+        var mostRecent: WorkoutSet = self.history![0]
+        for i in self.history! {
+            if i.timestamp > mostRecent.timestamp {
+                mostRecent = i
+            }
+        }
+        return mostRecent
+    }
             
     // https://developer.apple.com/forums/thread/731416
     public enum ExerciseGroup: String, Codable, CaseIterable, Identifiable {

@@ -18,6 +18,9 @@ struct ContentView: View {
         for i in content {
             context.insert(i)
         }
+        content.forEach {e in
+            SampleData.generateSets(exercise: e)
+        }
     }
     
     var body: some View {
