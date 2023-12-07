@@ -7,27 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF0611A72B1FC54900D3E354 /* WorkoutSetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0611A62B1FC54900D3E354 /* WorkoutSetDetail.swift */; };
 		CF6BDD822AF435D8009B9F0E /* ApolloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD812AF435D8009B9F0E /* ApolloApp.swift */; };
 		CF6BDD842AF435D8009B9F0E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD832AF435D8009B9F0E /* ContentView.swift */; };
 		CF6BDD882AF435DA009B9F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6BDD872AF435DA009B9F0E /* Assets.xcassets */; };
 		CF6BDD8B2AF435DA009B9F0E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF6BDD8A2AF435DA009B9F0E /* Preview Assets.xcassets */; };
 		CF6BDD952AF43758009B9F0E /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD942AF43758009B9F0E /* Exercise.swift */; };
 		CF6BDD972AF437C6009B9F0E /* WorkoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD962AF437C6009B9F0E /* WorkoutSet.swift */; };
-		CF6BDD9B2AF47AD5009B9F0E /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD9A2AF47AD5009B9F0E /* AddExerciseView.swift */; };
 		CF6BDD9D2AF47F95009B9F0E /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD9C2AF47F95009B9F0E /* SampleData.swift */; };
 		CF6BDDA02AF480A0009B9F0E /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD9F2AF480A0009B9F0E /* PreviewSampleData.swift */; };
-		CF6BDDA22AF484B8009B9F0E /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDDA12AF484B8009B9F0E /* ExerciseList.swift */; };
-		CF6BDDA42AF48943009B9F0E /* ExerciseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDDA32AF48943009B9F0E /* ExerciseDetailScreen.swift */; };
-		CF6BDDA82AF494FA009B9F0E /* ExerciseGroupPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDDA72AF494FA009B9F0E /* ExerciseGroupPicker.swift */; };
-		CF6BDDAB2AF54F2F009B9F0E /* AddWorkoutSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDDAA2AF54F2E009B9F0E /* AddWorkoutSetView.swift */; };
-		CF6BDDAD2AF55556009B9F0E /* WorkoutSetList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDDAC2AF55556009B9F0E /* WorkoutSetList.swift */; };
-		CF771D022AF6B91200AAA3CB /* ExerciseRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF771D012AF6B91200AAA3CB /* ExerciseRowView.swift */; };
-		CF771D062AF6F68200AAA3CB /* WorkoutSetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF771D052AF6F68200AAA3CB /* WorkoutSetRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CF0611A62B1FC54900D3E354 /* WorkoutSetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSetDetail.swift; sourceTree = "<group>"; };
 		CF6BDD7E2AF435D8009B9F0E /* Apollo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apollo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6BDD812AF435D8009B9F0E /* ApolloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloApp.swift; sourceTree = "<group>"; };
 		CF6BDD832AF435D8009B9F0E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,17 +27,9 @@
 		CF6BDD8D2AF435DA009B9F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF6BDD942AF43758009B9F0E /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		CF6BDD962AF437C6009B9F0E /* WorkoutSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSet.swift; sourceTree = "<group>"; };
-		CF6BDD9A2AF47AD5009B9F0E /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		CF6BDD9C2AF47F95009B9F0E /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		CF6BDD9F2AF480A0009B9F0E /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
-		CF6BDDA12AF484B8009B9F0E /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
-		CF6BDDA32AF48943009B9F0E /* ExerciseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailScreen.swift; sourceTree = "<group>"; };
-		CF6BDDA72AF494FA009B9F0E /* ExerciseGroupPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseGroupPicker.swift; sourceTree = "<group>"; };
 		CF6BDDA92AF49D88009B9F0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CF6BDDAA2AF54F2E009B9F0E /* AddWorkoutSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutSetView.swift; sourceTree = "<group>"; };
-		CF6BDDAC2AF55556009B9F0E /* WorkoutSetList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSetList.swift; sourceTree = "<group>"; };
-		CF771D012AF6B91200AAA3CB /* ExerciseRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseRowView.swift; sourceTree = "<group>"; };
-		CF771D052AF6F68200AAA3CB /* WorkoutSetRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSetRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,15 +96,6 @@
 		CF6BDD992AF47ABE009B9F0E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CF6BDD9A2AF47AD5009B9F0E /* AddExerciseView.swift */,
-				CF6BDDA12AF484B8009B9F0E /* ExerciseList.swift */,
-				CF771D012AF6B91200AAA3CB /* ExerciseRowView.swift */,
-				CF6BDDA32AF48943009B9F0E /* ExerciseDetailScreen.swift */,
-				CF6BDDAC2AF55556009B9F0E /* WorkoutSetList.swift */,
-				CF771D052AF6F68200AAA3CB /* WorkoutSetRowView.swift */,
-				CF0611A62B1FC54900D3E354 /* WorkoutSetDetail.swift */,
-				CF6BDDAA2AF54F2E009B9F0E /* AddWorkoutSetView.swift */,
-				CF6BDDA72AF494FA009B9F0E /* ExerciseGroupPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,20 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF6BDDA22AF484B8009B9F0E /* ExerciseList.swift in Sources */,
-				CF771D022AF6B91200AAA3CB /* ExerciseRowView.swift in Sources */,
 				CF6BDD972AF437C6009B9F0E /* WorkoutSet.swift in Sources */,
-				CF0611A72B1FC54900D3E354 /* WorkoutSetDetail.swift in Sources */,
 				CF6BDD842AF435D8009B9F0E /* ContentView.swift in Sources */,
-				CF6BDDA82AF494FA009B9F0E /* ExerciseGroupPicker.swift in Sources */,
-				CF6BDDA42AF48943009B9F0E /* ExerciseDetailScreen.swift in Sources */,
 				CF6BDD952AF43758009B9F0E /* Exercise.swift in Sources */,
 				CF6BDD9D2AF47F95009B9F0E /* SampleData.swift in Sources */,
-				CF771D062AF6F68200AAA3CB /* WorkoutSetRowView.swift in Sources */,
-				CF6BDDAD2AF55556009B9F0E /* WorkoutSetList.swift in Sources */,
-				CF6BDDAB2AF54F2F009B9F0E /* AddWorkoutSetView.swift in Sources */,
 				CF6BDDA02AF480A0009B9F0E /* PreviewSampleData.swift in Sources */,
-				CF6BDD9B2AF47AD5009B9F0E /* AddExerciseView.swift in Sources */,
 				CF6BDD822AF435D8009B9F0E /* ApolloApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

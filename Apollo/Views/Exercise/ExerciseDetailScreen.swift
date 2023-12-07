@@ -16,16 +16,14 @@ struct ExerciseDetailScreen: View {
     // TODO: Add a timer 
 
     var body: some View {
-        VStack {
-            Text(exercise.name).font(.largeTitle)
-            Text("Max Weight: \(exercise.maxWeight) lbs ").font(.title3)
-//            if (exercise.bestSet != nil){
-//                Text("Best Set: \(exercise.bestSet!.weight) x \(exercise.bestSet!.reps)")
-//            }
-//            Text("\(exercise.group.name)")
+        NavigationStack {
+            VStack(alignment: .center) {
+                Text("Max Weight: \(exercise.maxWeight) lbs ").font(.title3)
+                Text("\(exercise.group.name)")
+            }.navigationTitle(exercise.name)
+            Divider()
+            WorkoutSetList(exercise: exercise)
         }
-        Divider()
-        WorkoutSetList(exercise: exercise)
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct WorkoutSetDetail: View {
+struct WorkoutSetDetailView: View {
     var workoutSet: WorkoutSet
     @State var weight: Int = 0
     @Environment(\.dismiss) private var dismiss
@@ -36,7 +36,7 @@ private struct PreviewExerciseDetail: View {
     }
     
     var body: some View {
-        WorkoutSetDetail(workoutSet: getSet(exercises: exercises))
+        WorkoutSetDetailView(workoutSet: getSet(exercises: exercises))
     }
 }
 
