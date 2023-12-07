@@ -13,8 +13,14 @@ struct WorkoutSetRowView: View {
     var workoutSet: WorkoutSet
     private func duplicateSet(workoutSet: WorkoutSet){
         withAnimation{
-            let duplicateSet = WorkoutSet(weight: workoutSet.weight, reps: workoutSet.reps, exercise: exercise)
-            exercise.history.append(duplicateSet) // duplicate the given item
+            let duplicateSet = WorkoutSet(weight: workoutSet.weight, reps: workoutSet.reps)
+            var h = exercise.history
+            if h != nil {
+                h!.append(duplicateSet)
+            } else {
+                h = [duplicateSet]
+            }
+            exercise.history = h // duplicate the given item
         }
     }
     
@@ -31,7 +37,6 @@ struct WorkoutSetRowView: View {
         }.swipeActions(edge: .trailing){
             Button(role: .destructive) {
                 context.delete(workoutSet)
-                workoutSet.exercise!.history.removeAll(where: {$0.id == workoutSet.id})
             } label: {
                 Label("Delete", systemImage: "trash")
             }

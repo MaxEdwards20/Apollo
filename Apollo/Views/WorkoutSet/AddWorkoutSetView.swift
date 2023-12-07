@@ -82,10 +82,8 @@ struct AddWorkoutSetView: View {
                     }
                     Button("Save"){
                         withAnimation{
-                            // Test to see whether this is working
-                            let workoutSet = WorkoutSet(weight: weight, reps: numberReps, exercise: exercise) // Create it in context
-    //                        context.insert(workoutSet)
-                            exercise.history.append(workoutSet) // Saves it for the UI
+                            let workoutSet = WorkoutSet(weight: weight, reps: numberReps) // Create it in context
+                            exercise.history?.append(workoutSet)
                             isShowingAddSets = false // close the window
                         }
                     }
@@ -109,7 +107,7 @@ private struct PreviewAddWorkoutSetView: View {
     }
 }
 
-#Preview {
+#Preview { @MainActor in
     PreviewAddWorkoutSetView()
         .modelContainer(previewContainer)
 }

@@ -9,35 +9,29 @@ import Foundation
 import SwiftData
 
 @Model
-final class WorkoutSet: Identifiable, CustomStringConvertible {
-    var id: UUID
-    var timestamp: Date
-    var weight:Int
-    var reps: Int
-    var notes:String
+class WorkoutSet: CustomStringConvertible {
+    var id: UUID = UUID()
+    var timestamp: Date = Date.now
+    var weight:Int = 0
+    var reps: Int = 0
+    
     var totalWeight:Int {
         weight * reps
     }
-    var exercise: Exercise?
+    var notes:String?
+    var exercise:Exercise?
     
-    init(weight: Int, reps: Int, notes: String = "", exercise: Exercise, timestamp:Date = Date.now) {
-        self.id = UUID()
+    init(weight: Int, reps: Int, timestamp: Date = Date.now, notes: String? = nil) {
         self.timestamp = timestamp
         self.weight = weight
         self.reps = reps
-        self.notes = notes
-        self.exercise = exercise
+        if notes != nil {self.notes = notes}
     }
     
     var description: String {
-        return "Weight: \(self.weight) Reps: \(self.reps) Exercise: \(String(describing: self.exercise!.name))"
+        return "Weight: \(self.weight) Reps: \(self.reps)"
     }
 }
 
-extension WorkoutSet : Comparable {
-    public static func < (lhs: WorkoutSet, rhs: WorkoutSet) -> Bool {
-        lhs.timestamp < rhs.timestamp
-    }
-}
 
 

@@ -18,11 +18,6 @@ struct ContentView: View {
         for i in content {
             context.insert(i)
         }
-        for i in content {
-            _ = SampleData.generateSet(exercise: i)
-            _ = SampleData.generateSet(exercise: i)
-            _ = SampleData.generateSet(exercise: i)
-        }
     }
     
     var body: some View {
@@ -63,10 +58,9 @@ struct ContentView: View {
             }
         }
     }
-    
 }
 
-#Preview {
+#Preview { @MainActor in
     ContentView()
         .modelContainer(previewContainer)
 }

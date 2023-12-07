@@ -25,7 +25,13 @@ final class SampleData {
         return [bench, squat, deadlift, curl, pullup, run]
     }
     
-    static func generateSet(exercise: Exercise) -> WorkoutSet {
+    static func generateSets(num: Int = 5, exercise: Exercise){
+        for _ in 1...num {
+            generateSet(exercise: exercise)
+        }
+    }
+    
+    static func generateSet(exercise: Exercise) {
         // Determine a random time interval within the last week, month, or year
         let currentDate = Date()
         let timeInterval: TimeInterval
@@ -44,6 +50,7 @@ final class SampleData {
         let lowerBound = currentDate.addingTimeInterval(-timeInterval)
         let randomTimestamp = Date(timeInterval: TimeInterval.random(in: lowerBound.timeIntervalSinceReferenceDate...currentDate.timeIntervalSinceReferenceDate), since: Date(timeIntervalSinceReferenceDate: 0))
         
-        return WorkoutSet(weight: Int.random(in: 50...300), reps: Int.random(in: 1...30), exercise: exercise, timestamp: randomTimestamp)
+        let s = WorkoutSet(weight: Int.random(in: 50...300), reps: Int.random(in: 1...30), timestamp: randomTimestamp)
+        s.exercise = exercise
     }
 }

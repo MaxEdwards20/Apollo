@@ -16,12 +16,25 @@ import SwiftData
 @MainActor
  let previewContainer: ModelContainer = {
     do {
-        let container = try ModelContainer(for: Exercise.self, WorkoutSet.self)
+        let container = try ModelContainer(for: Exercise.self)
         let configuration = (ModelConfiguration(isStoredInMemoryOnly: true))
         let modelContext = container.mainContext
+        // now we add the items into the context
+        
         if try modelContext.fetch(FetchDescriptor<Exercise>()).isEmpty {
-            SampleData().contents.forEach { container.mainContext.insert($0) }
+            let data = SampleData().contents
+            // Add the exercises to the context
+            data.forEach { exercise in
+                container.mainContext.insert(exercise)
+            }
+            // Add sets to the context for each exercise
+            data.forEach {e in
+                SampleData.generateSets(exercise: e)
+            }
         }
+        
+        
+        // Potentially could add the exercise sets here
         return container
     } catch {
         fatalError("Failed to create container")

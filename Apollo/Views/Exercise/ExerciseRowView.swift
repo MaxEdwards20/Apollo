@@ -23,8 +23,8 @@ struct ExerciseRowView: View {
                     .font(.title2)
             }
             Spacer()
-            if exercise.history.count > 0 {
-                Text("Last Set: \(exercise.history.last!.weight) x \(exercise.history.last!.reps)").onAppear()
+            if exercise.history != nil && exercise.history!.last != nil {
+                Text("Last Set: \(exercise.history!.last!.weight) x \(exercise.history!.last!.reps)").onAppear()
             } else {
                 Text("Get Started")
             }
