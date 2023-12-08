@@ -10,11 +10,9 @@ import SwiftData
 
 @Model
 class WorkoutSet: CustomStringConvertible {
-    var id: UUID = UUID()
     var timestamp: Date = Date.now
     var weight:Int = 0
     var reps: Int = 0
-    
     var totalWeight:Int {
         weight * reps
     }

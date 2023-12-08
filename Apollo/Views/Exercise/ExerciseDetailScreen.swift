@@ -33,7 +33,9 @@ struct ExerciseDetailScreen: View {
 private struct PreviewExerciseDetailScreen: View {
     @Query private var exercises: [Exercise] // one source of truth
     var body: some View {
-        ExerciseDetailScreen(exercise: exercises[0])
+        NavigationStack{
+            ExerciseDetailScreen(exercise: exercises[0])
+        }
     }
 }
 

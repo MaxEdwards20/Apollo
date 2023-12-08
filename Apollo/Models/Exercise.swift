@@ -10,9 +10,9 @@ import SwiftData
 
 @Model
 class Exercise: CustomStringConvertible {
-    var id: UUID
-    var name:String
-    var group:ExerciseGroup
+    var name:String = ""
+    var group:ExerciseGroup = ExerciseGroup.abs
+    
     @Relationship(deleteRule: .cascade)
     var history : [WorkoutSet]?
     
@@ -30,14 +30,12 @@ class Exercise: CustomStringConvertible {
     }
     
     init( name: String, group: ExerciseGroup) {
-        self.id = UUID()
         self.name = name.lowercased().capitalized // clean up the name before capitalizing it for looks
         self.group = group
-        self.history = []
     }
     
     public func getMostRecentSet() -> WorkoutSet? {
-        if (self.history == nil) {return nil}
+        if (self.history == nil || self.history!.count == 0) {return nil}
         var mostRecent: WorkoutSet = self.history![0]
         for i in self.history! {
             if i.timestamp > mostRecent.timestamp {

@@ -12,6 +12,7 @@ struct ExerciseRowView: View {
     var exercise: Exercise
     @Environment(\.modelContext) private var context
     
+    
     private func deleteExercise(e: Exercise){
         context.delete(e)
     }
@@ -23,7 +24,7 @@ struct ExerciseRowView: View {
                     .font(.title2)
             }
             Spacer()
-            if exercise.history != nil {
+            if exercise.getMostRecentSet() != nil {
                 Text("Last Set: \(exercise.getMostRecentSet()!.weight) x \(exercise.getMostRecentSet()!.reps)").onAppear()
             } else {
                 Text("Get Started")
