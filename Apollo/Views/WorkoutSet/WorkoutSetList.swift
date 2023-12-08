@@ -18,7 +18,7 @@ struct WorkoutSetList: View {
     @Environment(\.modelContext) private var context// We need this to be able to delete items
     @State private var isShowingAddSets = false
     
-    func categorizeWorkoutSets(workoutSets: [WorkoutSet]) -> (today: [WorkoutSet], thisWeek: [WorkoutSet], pastMonth: [WorkoutSet], pastYear: [WorkoutSet]) {
+    private func categorizeWorkoutSets(workoutSets: [WorkoutSet]) -> (today: [WorkoutSet], thisWeek: [WorkoutSet], pastMonth: [WorkoutSet], pastYear: [WorkoutSet]) {
         let currentDate = Date()
         let calendar = Calendar.current
         
@@ -53,63 +53,50 @@ struct WorkoutSetList: View {
         VStack{
             Text("History")
                 .font(.title3)
-
-        }
-        List {
-            if !categorizedSets.today.isEmpty{
-                Section(header: Text("Today")) {
-                    ForEach(categorizedSets.today) { workoutSet in
-                        NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
-                            WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+            List {
+                if !categorizedSets.today.isEmpty{
+                    Section(header: Text("Today")) {
+                        ForEach(categorizedSets.today) { workoutSet in
+                            NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
+                                WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                            }
+                        }
+                    }
+                }
+                if !categorizedSets.thisWeek.isEmpty{
+                    Section(header: Text("This Week")) {
+                        ForEach(categorizedSets.thisWeek) { workoutSet in
+                            NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
+                                WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                            }
+                        }
+                    }
+                }
+                // TODO: Make this a include the past 4 weeks. Right now it cuts off at the beginning of the month
+                if !categorizedSets.pastMonth.isEmpty{
+                    Section(header: Text("This Month")) {
+                        ForEach(categorizedSets.pastMonth) { workoutSet in
+                            NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
+                                WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                            }
+                        }
+                    }
+                }
+                if !categorizedSets.pastYear.isEmpty{
+                    Section(header: Text("Past Year")) {
+                        ForEach(categorizedSets.pastYear) { workoutSet in
+                            NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
+                                WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
+                            }
                         }
                     }
                 }
             }
             
-            if !categorizedSets.thisWeek.isEmpty{
-                Section(header: Text("This Week")) {
-                    ForEach(categorizedSets.thisWeek) { workoutSet in
-                        NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
-                            WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
-                        }
-                    }
-                }
-            }// TODO: Make this a include the past 4 weeks. Right now it cuts off at the beginning of the month
-            if !categorizedSets.pastMonth.isEmpty{
-                Section(header: Text("This Month")) {
-                    ForEach(categorizedSets.pastMonth) { workoutSet in
-                        NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
-                            WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
-                        }
-                    }
-                }
-            }
-            if !categorizedSets.pastYear.isEmpty{
-                Section(header: Text("Past Year")) {
-                    ForEach(categorizedSets.pastYear) { workoutSet in
-                        NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
-                            WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
-                        }
-                    }
-                }
-            }
         }
-        // Make this a pill
-        HStack {
-            Button(action: {
-                isShowingAddSets = true
-            }) {
-                Text("Add a Set")
-                    .font(.title2)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
-                    .foregroundColor(.white)
-            }.frame(maxWidth: .infinity)
-        }.popover(isPresented: $isShowingAddSets, content: {
-            AddWorkoutSetView(exercise: exercise, isShowingAddSets: $isShowingAddSets)
-                .padding()
-            }
-    )}
+        .padding()
+        .padding(.top, -5)
+    }
 }
 
 

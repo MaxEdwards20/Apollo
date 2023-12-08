@@ -50,7 +50,7 @@ final class SampleData {
         let lowerBound = currentDate.addingTimeInterval(-timeInterval)
         let randomTimestamp = Date(timeInterval: TimeInterval.random(in: lowerBound.timeIntervalSinceReferenceDate...currentDate.timeIntervalSinceReferenceDate), since: Date(timeIntervalSinceReferenceDate: 0))
         
-        let s = WorkoutSet(weight: Int.random(in: 50...300), reps: Int.random(in: 1...30), timestamp: randomTimestamp)
+        let s = WorkoutSet(weight: Int.random(in: 20...100) * 5, reps: Int.random(in: 1...30), timestamp: randomTimestamp)
         s.exercise = exercise
     }
 }

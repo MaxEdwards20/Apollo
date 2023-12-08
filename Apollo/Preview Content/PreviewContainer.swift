@@ -31,10 +31,8 @@ import SwiftData
             data.forEach {e in
                 SampleData.generateSets(exercise: e)
             }
+            
         }
-        
-        
-        // Potentially could add the exercise sets here
         return container
     } catch {
         fatalError("Failed to create container")

@@ -25,6 +25,10 @@ struct ExerciseList: View {
                         }
                     }
                 }
+            }.overlay {
+                if exercises.isEmpty {
+                    NoExercisesView()
+                }
             }
     }
 }
@@ -39,7 +43,22 @@ private struct PreviewExerciseView: View {
     }
 }
 
+private struct PreviewEmptyExerciseView: View {
+    @Query private var exercises: [Exercise]
+    var body: some View {
+        NavigationStack{
+            ExerciseList(exercises: [])
+        }
+    }
+}
+#Preview{
+    PreviewEmptyExerciseView()
+        .modelContainer(previewContainer)
+        .previewDisplayName("Empty Exercise View")
+}
+
 #Preview {
     PreviewExerciseView()
         .modelContainer(previewContainer)
+        .previewDisplayName("Full Exercise")
 }

@@ -2,5 +2,9 @@
 
 * Jump to definition: control + command + J
 * Highlight Occurences: command + D
-* Move line up and down option command up
+* Move selection/line up and down:  option + up or option  + down
+* Switch tabs command + shift + [
+* Close tabs command + W
+* build: control + command + B
+
 

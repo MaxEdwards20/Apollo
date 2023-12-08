@@ -23,7 +23,7 @@ struct AddWorkoutSetView: View {
     
     private func calculateFinalWeight(){
         let calcWeight = ((fortyFive * 45) + (twentyFive * 25) + (ten  * 10) + (five * 5))
-        weight = addBarbell ? calcWeight * 2 + 45 : calcWeight
+        weight = addBarbell ? calcWeight * 2 + 45 + weight % 5 : calcWeight + weight % 5
     }
     
     private func resetWeights(){
@@ -42,30 +42,41 @@ struct AddWorkoutSetView: View {
                 List{
                     // Weight
                     Section {
-                        Text("Weight: \(Int(weight))")
+                        HStack {
+                            Text("Weight: ")
+                                .padding(.trailing, 20)
+                            
+                            TextField("", value: $weight, formatter: NumberFormatter())
+                                .keyboardType(.numberPad)
+                        }
                         HStack {
                             Toggle("Barbell", isOn: $addBarbell).onChange(of: addBarbell){calculateFinalWeight()}
                         }
                         HStack {
                             Text("45 lbs: ")
-                            Stepper("\(fortyFive)", value: $fortyFive, in:0...30)
+                                .padding(.trailing, 20)
+                            TextField("", value: $fortyFive, formatter:NumberFormatter()).keyboardType(.numberPad)
+                            Stepper("", value: $fortyFive, in:0...30)
                         }.onChange(of: fortyFive){calculateFinalWeight()}
                         HStack {
                             Text("25 lbs: ")
-                            Stepper("\(twentyFive)", value: $twentyFive, in:0...30)
+                                .padding(.trailing, 20)
+                            TextField("", value: $twentyFive, formatter:NumberFormatter()).keyboardType(.numberPad)
+                            Stepper("", value: $twentyFive, in:0...30)
                         }.onChange(of: twentyFive){calculateFinalWeight()}
                         HStack {
                             Text("10 lbs: ")
-                            Stepper("\(ten)", value: $ten    , in:0...30)
+                                .padding(.trailing, 20)
+                            TextField("", value: $ten, formatter:NumberFormatter()).keyboardType(.numberPad)
+                            Stepper("", value: $ten    , in:0...30)
                         }.onChange(of: ten){calculateFinalWeight()}
                         HStack {
                             Text("5 lbs: ")
-                            Stepper("\(five)", value: $five, in:0...30)
+                                .padding(.trailing, 20)
+                            TextField("", value: $five, formatter:NumberFormatter()).keyboardType(.numberPad)
+                            Stepper("", value: $five, in:0...30)
                         }.onChange(of: five){calculateFinalWeight()}
-                        HStack {
-                            Text("Adjust by 1 lb ")
-                            Stepper("", value: $weight, in:0...1000)
-                        }
+     
                         Button("Reset") {
                             withAnimation{
                                 resetWeights()
