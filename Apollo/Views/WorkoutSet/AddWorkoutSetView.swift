@@ -23,7 +23,7 @@ struct AddWorkoutSetView: View {
     
     private func calculateFinalWeight(){
         let calcWeight = ((fortyFive * 45) + (twentyFive * 25) + (ten  * 10) + (five * 5))
-        weight = addBarbell ? calcWeight + 45 : calcWeight
+        weight = addBarbell ? calcWeight * 2 + 45 : calcWeight
     }
     
     private func resetWeights(){
@@ -39,7 +39,6 @@ struct AddWorkoutSetView: View {
         NavigationStack {
             VStack {
                 Text("Apollo Strong").font(.largeTitle)
-                Image(systemName: "sun.dust")
                 List{
                     // Weight
                     Section {
