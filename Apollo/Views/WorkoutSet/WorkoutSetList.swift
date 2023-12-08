@@ -59,7 +59,7 @@ struct WorkoutSetList: View {
             if !categorizedSets.today.isEmpty{
                 Section(header: Text("Today")) {
                     ForEach(categorizedSets.today) { workoutSet in
-                        NavigationLink(destination: WorkoutSetDetailView(workoutSet: workoutSet)){
+                        NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
                             WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
                         }
                     }
@@ -69,7 +69,7 @@ struct WorkoutSetList: View {
             if !categorizedSets.thisWeek.isEmpty{
                 Section(header: Text("This Week")) {
                     ForEach(categorizedSets.thisWeek) { workoutSet in
-                        NavigationLink(destination: WorkoutSetDetailView(workoutSet: workoutSet)){
+                        NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
                             WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
                         }
                     }
@@ -78,7 +78,7 @@ struct WorkoutSetList: View {
             if !categorizedSets.pastMonth.isEmpty{
                 Section(header: Text("This Month")) {
                     ForEach(categorizedSets.pastMonth) { workoutSet in
-                        NavigationLink(destination: WorkoutSetDetailView(workoutSet: workoutSet)){
+                        NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
                             WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
                         }
                     }
@@ -87,7 +87,7 @@ struct WorkoutSetList: View {
             if !categorizedSets.pastYear.isEmpty{
                 Section(header: Text("Past Year")) {
                     ForEach(categorizedSets.pastYear) { workoutSet in
-                        NavigationLink(destination: WorkoutSetDetailView(workoutSet: workoutSet)){
+                        NavigationLink(destination: EditWorkoutSetView(workoutSet: workoutSet)){
                             WorkoutSetRowView(exercise: exercise, workoutSet: workoutSet)
                         }
                     }
