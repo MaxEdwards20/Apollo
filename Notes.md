@@ -7,7 +7,7 @@
 * Body part history to show how often you are hitting various parts of your physique (based on exercise values)
 
 
-### Data
+### SwiftData Tips
 - Create the workoutSet, then add it to the exercise history. Directly associating the exercise and history does not update the UI as well 
 ```swift
     let s = WorkoutSet(weight: Int.random(in: 50...300), reps: Int.random(in: 1...30), timestamp: randomTimestamp)
@@ -17,10 +17,16 @@
 
 
 ##  Shortcuts
-
 * Jump to definition: control + command + J
 * Highlight Occurences: command + D
 * Move selection/line up and down:  option + up or option  + down
 * Switch tabs command + shift + [
 * Close tabs command + W
 * build: control + command + B
+
+## References
+[Medium](https://github.com/emptybasket/anothertodo-app/blob/develop/Another%20ToDo%20App/Another%20ToDo%20App/Screens/AddToDoListItemScreen.swift)
+
+[Helpful Demo Repo](https://github.com/gahntpo/SnippetBox-SwiftData/blob/main/SnippetBox/swift%20data/models/Folder.swift)
+
+[SwiftData with CloudKit](https://www.youtube.com/watch?v=un45CkTY5fM)
