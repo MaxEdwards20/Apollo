@@ -35,10 +35,17 @@ struct AddWorkoutSetView: View {
         addBarbell = false
     }
     
+    private func handleSave(){
+        withAnimation{
+            let workoutSet = WorkoutSet(weight: weight, reps: numberReps) // Create it in context
+            exercise.history?.append(workoutSet)
+            isShowingAddSets = false // close the window
+        }
+    }
+    
     var body: some View{
         NavigationStack {
             VStack {
-                Text("Apollo Strong").font(.largeTitle)
                 List{
                     // Weight
                     Section {
@@ -83,22 +90,20 @@ struct AddWorkoutSetView: View {
                             }
                         }
                     }
-                    // Reps
                     Section {
                         HStack {
                             Text("Repetitions: ")
+                            TextField("", value: $weight, formatter: NumberFormatter())
+                                .keyboardType(.numberPad)
                             Stepper("\(numberReps)", value: $numberReps, in:1...50)
                         }
                     }
                     Button("Save"){
-                        withAnimation{
-                            let workoutSet = WorkoutSet(weight: weight, reps: numberReps) // Create it in context
-                            exercise.history?.append(workoutSet)
-                            isShowingAddSets = false // close the window
-                        }
+                        handleSave()
                     }
                 }
-            }.toolbar{
+            }.navigationTitle("Add a Set")
+            .toolbar{
                 ToolbarItem(placement: .topBarLeading){
                     Button("Close"){
                         dismiss()
@@ -113,7 +118,9 @@ struct AddWorkoutSetView: View {
 private struct PreviewAddWorkoutSetView: View {
     @Query private var exercises: [Exercise] // one source of truth
     var body: some View {
-        AddWorkoutSetView(exercise: exercises[0], isShowingAddSets: .constant(true))
+        NavigationStack{
+            AddWorkoutSetView(exercise: exercises[0], isShowingAddSets: .constant(true))
+        }
     }
 }
 

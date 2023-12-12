@@ -45,7 +45,7 @@ struct ContentView: View {
                     Button {
                         generateData()
                     } label : {
-                        Text("Dummy Batch")
+                        Text("GenData")
                     }
                 }
                 ToolbarItem(placement: .topBarLeading){
@@ -56,7 +56,7 @@ struct ContentView: View {
                             }
                         }
                     } label : {
-                        Text("Clear Dummy Data")
+                        Text("DelData")
                     }
                 }
             }

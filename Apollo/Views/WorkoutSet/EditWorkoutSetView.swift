@@ -11,7 +11,7 @@ import SwiftData
 struct EditWorkoutSetView: View {
     var workoutSet: WorkoutSet
     
-//    https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
+    //    https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
     enum Field {
         case weight
         case reps
@@ -29,7 +29,7 @@ struct EditWorkoutSetView: View {
     @FocusState private var focusedField: Field?
     
     //TODO: Add cards for each part of set to display them prettier with pictures and coloration
-
+    
     private func loadValues(){
         weight = workoutSet.weight
         reps = workoutSet.reps
@@ -66,11 +66,7 @@ struct EditWorkoutSetView: View {
                     .keyboardType(.numberPad)
                     .disabled(!isEditing)
                     .focused($focusedField, equals: .weight)
-                
-                if (isEditing){
-                    Stepper("", value: $weight, in: 0...2000, step: 1)
-                }
-                
+                Stepper("", value: $weight, in: 0...2000, step: 1).disabled(!isEditing)
             }
             HStack {
                 Text("Reps: ")
@@ -79,23 +75,13 @@ struct EditWorkoutSetView: View {
                     .keyboardType(.numberPad)
                     .disabled(!isEditing)
                     .focused($focusedField, equals: .reps)
+                Stepper("", value: $reps, step: 1).disabled(!isEditing)
                 
-                if (isEditing){
-                    Stepper("", value: $reps, step: 1)
-                }
             }
             HStack {
-                if (!isEditing){
-                    Text("Date: ")
-                        .padding(.trailing, 10)
-                        .padding(.leading, -5)
-                    Text(timestamp.formatted())
-                        .padding(.trailing, 135)
-                } else {
-                    Text("Date: ").padding(.trailing, 10)
-                    DatePicker("", selection: $timestamp, in: ...Date())
-                        .disabled(!isEditing)
-                }
+                Text("Date: ")
+                DatePicker("", selection: $timestamp, in: ...Date())
+                    .disabled(!isEditing)
             }
             if (notes != nil && !notes!.isEmpty){
                 HStack {
@@ -111,7 +97,7 @@ struct EditWorkoutSetView: View {
                 Button(action: {
                     saveChanges()
                     toggleIsEditing()
-//                    dismiss()
+                    //                    dismiss()
                 }){
                     Text("Save Changes")
                         .padding()
@@ -128,34 +114,26 @@ struct EditWorkoutSetView: View {
             }
             .navigationTitle(isEditing ? "Edit Set Details" : "Set Details")
             .toolbar{
-                if !isEditing {
+                if isEditing {
                     ToolbarItem(placement: .topBarTrailing){
-                        Button("Edit"){
+                        Button("Save"){
+                            saveChanges()
+                            toggleIsEditing()
+                        }
+                    }
+                    ToolbarItem(placement: .topBarLeading){
+                        Button("Cancel"){
                             toggleIsEditing()
                         }
                     }
                 } else {
                     ToolbarItem(placement: .topBarTrailing){
-                        Button("Cancel"){
+                        Button("Edit"){
                             toggleIsEditing()
                         }
                     }
                 }
             }
-//            .onTapGesture {
-//                switch focusedField {
-//                case .weight:
-//                    focusedField = nil
-//                case .reps:
-//                    focusedField = nil
-//                case .date:
-//                    focusedField = nil
-//                case .notes:
-//                    focusedField = nil
-//                case nil:
-//                    print("Tapped away")
-//                }
-//            }
     }
 }
 
@@ -167,8 +145,6 @@ private struct PreviewEditWorkoutSet: View {
         }
     }
 }
-
-
 
 #Preview {
     PreviewEditWorkoutSet()

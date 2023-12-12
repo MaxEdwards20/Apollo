@@ -25,7 +25,7 @@ final class SampleData {
         return [bench, squat, deadlift, curl, pullup, run]
     }
     
-    static func generateSets(num: Int = 5, exercise: Exercise){
+    static func generateSets(num: Int = 50, exercise: Exercise){
         for _ in 1...num {
             generateSet(exercise: exercise)
         }

@@ -52,6 +52,7 @@ class Exercise: CustomStringConvertible {
         case back
         case chest
         case abs
+        case shoulders
         case cardio
         
         var name: String {

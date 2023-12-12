@@ -11,16 +11,11 @@ struct WorkoutSetRowView: View {
     @Environment(\.modelContext) private var context
     var exercise: Exercise
     var workoutSet: WorkoutSet
+    
     private func duplicateSet(workoutSet: WorkoutSet){
         withAnimation{
             let duplicateSet = WorkoutSet(weight: workoutSet.weight, reps: workoutSet.reps)
-            var h = exercise.history
-            if h != nil {
-                h!.append(duplicateSet)
-            } else {
-                h = [duplicateSet]
-            }
-            exercise.history = h // duplicate the given item
+            exercise.history?.append(duplicateSet)
         }
     }
     
@@ -43,6 +38,8 @@ struct WorkoutSetRowView: View {
         }
     }
 }
+
+
 
 //#Preview {
 //    WorkoutHistoryRowView()

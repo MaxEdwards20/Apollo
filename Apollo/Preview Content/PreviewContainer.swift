@@ -29,7 +29,7 @@ import SwiftData
             }
             // Add sets to the context for each exercise
             data.forEach {e in
-                SampleData.generateSets(exercise: e)
+                SampleData.generateSets(num: 10, exercise: e)
             }
             
         }
