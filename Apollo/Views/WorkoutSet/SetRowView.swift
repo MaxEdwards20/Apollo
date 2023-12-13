@@ -15,7 +15,8 @@ struct SetRowView: View {
     private func duplicateSet(workoutSet: WorkoutSet){
         withAnimation{
             let duplicateSet = WorkoutSet(weight: workoutSet.weight, reps: workoutSet.reps)
-            exercise.history?.append(duplicateSet)
+            duplicateSet.exercise = exercise
+//            exercise.history?.append(duplicateSet)
         }
     
     }

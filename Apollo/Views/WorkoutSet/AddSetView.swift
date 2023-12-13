@@ -41,7 +41,7 @@ struct AddSetView: View {
     private func handleSave(){
         withAnimation{
             let workoutSet = WorkoutSet(weight: weight, reps: numberReps) // Create it in context
-            exercise.history?.append(workoutSet)
+            workoutSet.exercise = exercise
             isShowingAddSets = false // close the window
         }
     }

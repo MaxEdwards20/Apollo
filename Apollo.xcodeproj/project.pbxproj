@@ -18,7 +18,7 @@
 		CF414E6F2B2221C900018948 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF414E6A2B2221C900018948 /* AddExerciseView.swift */; };
 		CF414E742B2221E000018948 /* AddSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF414E702B2221E000018948 /* AddSetView.swift */; };
 		CF414E752B2221E000018948 /* SetRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF414E712B2221E000018948 /* SetRowView.swift */; };
-		CF414E762B2221E000018948 /* SetHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF414E722B2221E000018948 /* SetHistory.swift */; };
+		CF414E762B2221E000018948 /* SetHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF414E722B2221E000018948 /* SetHistoryView.swift */; };
 		CF414E772B2221E000018948 /* SetDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF414E732B2221E000018948 /* SetDetailScreen.swift */; };
 		CF6BDD822AF435D8009B9F0E /* ApolloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD812AF435D8009B9F0E /* ApolloApp.swift */; };
 		CF6BDD842AF435D8009B9F0E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD832AF435D8009B9F0E /* ContentView.swift */; };
@@ -30,6 +30,7 @@
 		CF6BDDA02AF480A0009B9F0E /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD9F2AF480A0009B9F0E /* PreviewContainer.swift */; };
 		CF767D1B2B290D7400563221 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CF767D1A2B290D7400563221 /* SwiftUICharts */; };
 		CF767D1D2B290D9F00563221 /* SetHistoryChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF767D1C2B290D9F00563221 /* SetHistoryChart.swift */; };
+		CFD142202B2A5B82009DDA0C /* CategorizedSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1421F2B2A5B82009DDA0C /* CategorizedSetsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +45,7 @@
 		CF414E6A2B2221C900018948 /* AddExerciseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddExerciseView.swift; path = Apollo/Views/Exercise/AddExerciseView.swift; sourceTree = SOURCE_ROOT; };
 		CF414E702B2221E000018948 /* AddSetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSetView.swift; path = Apollo/Views/WorkoutSet/AddSetView.swift; sourceTree = SOURCE_ROOT; };
 		CF414E712B2221E000018948 /* SetRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetRowView.swift; path = Apollo/Views/WorkoutSet/SetRowView.swift; sourceTree = SOURCE_ROOT; };
-		CF414E722B2221E000018948 /* SetHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetHistory.swift; path = Apollo/Views/WorkoutSet/SetHistory.swift; sourceTree = SOURCE_ROOT; };
+		CF414E722B2221E000018948 /* SetHistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetHistoryView.swift; path = Apollo/Views/WorkoutSet/SetHistoryView.swift; sourceTree = SOURCE_ROOT; };
 		CF414E732B2221E000018948 /* SetDetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetDetailScreen.swift; path = Apollo/Views/WorkoutSet/SetDetailScreen.swift; sourceTree = SOURCE_ROOT; };
 		CF6BDD7E2AF435D8009B9F0E /* Apollo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Apollo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6BDD812AF435D8009B9F0E /* ApolloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloApp.swift; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		CF6BDDA92AF49D88009B9F0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CF767D1C2B290D9F00563221 /* SetHistoryChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHistoryChart.swift; sourceTree = "<group>"; };
 		CF767D1E2B2918A900563221 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
+		CFD1421F2B2A5B82009DDA0C /* CategorizedSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorizedSetsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +103,8 @@
 			children = (
 				CF414E702B2221E000018948 /* AddSetView.swift */,
 				CF414E732B2221E000018948 /* SetDetailScreen.swift */,
-				CF414E722B2221E000018948 /* SetHistory.swift */,
+				CF414E722B2221E000018948 /* SetHistoryView.swift */,
+				CFD1421F2B2A5B82009DDA0C /* CategorizedSetsView.swift */,
 				CF414E712B2221E000018948 /* SetRowView.swift */,
 				CF404C412B23BBFD007CD812 /* NoSetsView.swift */,
 				CF767D1C2B290D9F00563221 /* SetHistoryChart.swift */,
@@ -247,7 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF414E762B2221E000018948 /* SetHistory.swift in Sources */,
+				CF414E762B2221E000018948 /* SetHistoryView.swift in Sources */,
 				CF414E772B2221E000018948 /* SetDetailScreen.swift in Sources */,
 				CF6BDD972AF437C6009B9F0E /* WorkoutSet.swift in Sources */,
 				CF404C402B23BA84007CD812 /* NoExercisesView.swift in Sources */,
@@ -256,6 +259,7 @@
 				CF767D1D2B290D9F00563221 /* SetHistoryChart.swift in Sources */,
 				CF404C422B23BBFD007CD812 /* NoSetsView.swift in Sources */,
 				CF6BDD952AF43758009B9F0E /* Exercise.swift in Sources */,
+				CFD142202B2A5B82009DDA0C /* CategorizedSetsView.swift in Sources */,
 				CF414E6F2B2221C900018948 /* AddExerciseView.swift in Sources */,
 				CF414E752B2221E000018948 /* SetRowView.swift in Sources */,
 				CF414E6E2B2221C900018948 /* ExerciseGroupPicker.swift in Sources */,

@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+// TODO: Add Apollo logo as background for blank screens or empty space
+
 struct SetDetailScreen: View {
     var workoutSet: WorkoutSet
     

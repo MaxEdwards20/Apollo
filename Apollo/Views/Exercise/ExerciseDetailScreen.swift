@@ -24,7 +24,7 @@ struct ExerciseDetailScreen: View {
                 } else {
                     Text("Max Weight: \(exercise.maxWeight) lbs ").font(.title3).padding(.top, -15)
                     Divider()
-                    SetHistory(exercise: exercise)
+                    SetHistoryView(exercise: exercise)
                 }
                 HStack {
                     Button(action: {
