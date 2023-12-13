@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct EditWorkoutSetView: View {
+struct SetDetailScreen: View {
     var workoutSet: WorkoutSet
     
     //    https://www.hackingwithswift.com/quick-start/swiftui/how-to-dismiss-the-keyboard-for-a-textfield
@@ -66,7 +66,9 @@ struct EditWorkoutSetView: View {
                     .keyboardType(.numberPad)
                     .disabled(!isEditing)
                     .focused($focusedField, equals: .weight)
-                Stepper("", value: $weight, in: 0...2000, step: 1).disabled(!isEditing)
+                if (isEditing){
+                    Stepper("", value: $weight, in: 0...2000, step: 1).disabled(!isEditing)
+                }
             }
             HStack {
                 Text("Reps: ")
@@ -75,7 +77,9 @@ struct EditWorkoutSetView: View {
                     .keyboardType(.numberPad)
                     .disabled(!isEditing)
                     .focused($focusedField, equals: .reps)
-                Stepper("", value: $reps, step: 1).disabled(!isEditing)
+                if (isEditing){
+                    Stepper("", value: $reps, step: 1).disabled(!isEditing)
+                }
                 
             }
             HStack {
@@ -141,7 +145,7 @@ private struct PreviewEditWorkoutSet: View {
     @Query private var sets: [WorkoutSet] // one source of truth
     var body: some View {
         NavigationStack {
-            EditWorkoutSetView(workoutSet: sets[0])
+            SetDetailScreen(workoutSet: sets[0])
         }
     }
 }

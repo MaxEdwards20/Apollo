@@ -22,10 +22,9 @@ struct ExerciseDetailScreen: View {
                 if exercise.history == nil || exercise.history!.isEmpty {
                     NoSetsView()
                 } else {
-                    Text("Max Weight: \(exercise.maxWeight) lbs ").font(.title3)
-                    Text("\(exercise.group.name)")
+                    Text("Max Weight: \(exercise.maxWeight) lbs ").font(.title3).padding(.top, -15)
                     Divider()
-                    WorkoutSetList(exercise: exercise)
+                    SetHistory(exercise: exercise)
                 }
                 HStack {
                     Button(action: {
@@ -40,15 +39,12 @@ struct ExerciseDetailScreen: View {
                     }
                 }
                 .popover(isPresented: $isShowingAddSets, content: {
-                    AddWorkoutSetView(exercise: exercise, isShowingAddSets: $isShowingAddSets)
+                    AddSetView(exercise: exercise, isShowingAddSets: $isShowingAddSets)
                         .padding()
                 })
             }
             .navigationTitle(exercise.name)
             .padding()
-//            .overlay {
-
-//            }
     }
 }
 

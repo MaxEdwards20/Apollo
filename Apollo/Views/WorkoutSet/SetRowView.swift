@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WorkoutSetRowView: View {
+struct SetRowView: View {
     @Environment(\.modelContext) private var context
     var exercise: Exercise
     var workoutSet: WorkoutSet
@@ -17,6 +17,7 @@ struct WorkoutSetRowView: View {
             let duplicateSet = WorkoutSet(weight: workoutSet.weight, reps: workoutSet.reps)
             exercise.history?.append(duplicateSet)
         }
+    
     }
     
     var body: some View {

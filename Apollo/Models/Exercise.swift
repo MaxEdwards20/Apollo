@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Exercise: CustomStringConvertible {
+public class Exercise: CustomStringConvertible {
     var name:String = ""
     var group:ExerciseGroup = ExerciseGroup.abs
     
@@ -25,7 +25,7 @@ class Exercise: CustomStringConvertible {
         computeBestSet()
     }
     
-    var description: String {
+    public var description: String {
         return "Name: \(self.name)"
     }
     
@@ -44,6 +44,8 @@ class Exercise: CustomStringConvertible {
         }
         return mostRecent
     }
+    
+    
             
     // https://developer.apple.com/forums/thread/731416
     public enum ExerciseGroup: String, Codable, CaseIterable, Identifiable {
@@ -89,6 +91,39 @@ class Exercise: CustomStringConvertible {
             return bestSet
         }
     }
+    
+    // Ideally we could just use the exercise.history here, but SwiftUI has issues with this
+    public func categorizeExerciseSetHistory(workoutSets: [WorkoutSet]) -> (today: [WorkoutSet], thisWeek: [WorkoutSet], thisMonth: [WorkoutSet], thisYear: [WorkoutSet]) {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        
+        var todaySets: [WorkoutSet] = []
+        var thisWeekSets: [WorkoutSet] = []
+        var thisMonthSets: [WorkoutSet] = []
+        var thisYearSets: [WorkoutSet] = []
+        
+        // Put each set into the proper categorization
+        for workoutSet in workoutSets {
+            if calendar.isDateInToday(workoutSet.timestamp) {
+                todaySets.append(workoutSet)
+            } else if calendar.isDate(workoutSet.timestamp, equalTo: currentDate, toGranularity: .weekOfYear) {
+                thisWeekSets.append(workoutSet)
+            } else if calendar.isDate(workoutSet.timestamp, equalTo: currentDate, toGranularity: .month)   {
+                thisMonthSets.append(workoutSet)
+            } else if calendar.isDate(workoutSet.timestamp, equalTo: currentDate, toGranularity: .year)  {
+                thisYearSets.append(workoutSet)
+            }
+        }
+        
+        // Sort the sets from most recent to last recent
+        for var l in [todaySets, thisWeekSets, thisMonthSets, thisYearSets]{
+            l.sort {$0.timestamp > $1.timestamp}
+        }
+        
+        return (todaySets, thisWeekSets, thisMonthSets, thisYearSets)
+    }
+    
+
 }
 
 

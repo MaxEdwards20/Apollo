@@ -12,8 +12,6 @@ struct ContentView: View {
     @State private var isPresented: Bool = false
     @Query private var exercises: [Exercise] // one source of truth
     @Environment(\.modelContext) private var context
-
-    
     private func generateData(){
         let content = SampleData().contents
         for i in content {
@@ -64,7 +62,7 @@ struct ContentView: View {
     }
 }
 
-#Preview { @MainActor in
+#Preview {
     ContentView()
         .modelContainer(previewContainer)
 }
