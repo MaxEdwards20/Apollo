@@ -21,7 +21,7 @@ import SwiftData
         let modelContext = container.mainContext
         // now we add the items into the context
         
-        if try modelContext.fetch(FetchDescriptor<Exercise>()).isEmpty {
+        if try modelContext.fetch(FetchDescriptor<Exercise>()).count < 6 {
             let data = SampleData().contents
             // Add the exercises to the context
             data.forEach { exercise in

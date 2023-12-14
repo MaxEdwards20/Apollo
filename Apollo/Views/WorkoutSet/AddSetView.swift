@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct AddSetView: View {
+    @Query var allSets: [WorkoutSet]
     var exercise: Exercise
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
@@ -41,7 +42,8 @@ struct AddSetView: View {
     private func handleSave(){
         withAnimation{
             let workoutSet = WorkoutSet(weight: weight, reps: numberReps) // Create it in context
-            workoutSet.exercise = exercise
+            exercise.history?.append(workoutSet)
+//            workoutSet.exercise = exercise
             isShowingAddSets = false // close the window
         }
     }

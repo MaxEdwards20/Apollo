@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ExerciseDetailScreen: View {
+    @Query var allSets :[WorkoutSet]
     var exercise: Exercise
     @Environment(\.dismiss) private var dismiss
     @State var maxWeight = 0;
@@ -17,9 +18,14 @@ struct ExerciseDetailScreen: View {
     // TODO: Add view differences. If we have history, then set all of the values to their approrpiate maxes. If not, use the default values
     // TODO: Add a timer
     
+    private var exerciseSets: [WorkoutSet] {
+        allSets.filter{$0.exercise?.id == exercise.id}
+    }
+    
     var body: some View {
             VStack() {
-                if exercise.history == nil || exercise.history!.isEmpty {
+//                exercise.history == nil || exercise.history!.isEmpty ||
+                if  exerciseSets.isEmpty {
                     NoSetsView()
                 } else {
                     Text("Max Weight: \(exercise.maxWeight) lbs ").font(.title3).padding(.top, -15)

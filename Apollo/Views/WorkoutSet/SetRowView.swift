@@ -11,7 +11,6 @@ struct SetRowView: View {
     @Environment(\.modelContext) private var context
     var exercise: Exercise
     var workoutSet: WorkoutSet
-    
     private func duplicateSet(workoutSet: WorkoutSet){
         withAnimation{
             let duplicateSet = WorkoutSet(weight: workoutSet.weight, reps: workoutSet.reps)

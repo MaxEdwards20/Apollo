@@ -9,11 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct CategorizedSetsView: View {
-    @Query var workoutSets: [WorkoutSet]
+    @Query var allWorkoutSets: [WorkoutSet]
     var exercise: Exercise
     private var history: [WorkoutSet] {
         // SwiftData CloudKit Sync Video 59:47
-        workoutSets.filter {$0.exercise!.id == exercise.id}
+        allWorkoutSets.filter {$0.exercise?.id == exercise.id}
     }
     private var computed: (today: [WorkoutSet], thisWeek: [WorkoutSet], thisMonth: [WorkoutSet], thisYear: [WorkoutSet]) {
         exercise.categorizeExerciseSetHistory(workoutSets: history)

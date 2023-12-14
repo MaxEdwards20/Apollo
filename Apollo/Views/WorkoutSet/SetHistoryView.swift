@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-// TODO: Make history items clickable to edit them
 // TODO: Add a graph that shows max weights over time
 // TODO: Add a graph that shows total weight over time
 
