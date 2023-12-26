@@ -92,6 +92,14 @@ public class Exercise: CustomStringConvertible {
         }
     }
     
+    public func sortHistory() -> [WorkoutSet]? {
+        guard var sortedHistory = history else { return nil }
+
+        sortedHistory.sort(by: { $0.timestamp < $1.timestamp })
+
+        return sortedHistory
+    }
+    
     // Ideally we could just use the exercise.history here, but SwiftUI has issues with this
     public func categorizeExerciseSetHistory(workoutSets: [WorkoutSet]) -> (today: [WorkoutSet], thisWeek: [WorkoutSet], thisMonth: [WorkoutSet], thisYear: [WorkoutSet]) {
         let currentDate = Date()
