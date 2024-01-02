@@ -13,9 +13,6 @@ public class WorkoutSet: CustomStringConvertible {
     var timestamp: Date = Date.now
     var weight:Int = 0
     var reps: Int = 0
-    var totalWeight:Int {
-         weight * reps
-    }
     var duration:TimeInterval?
     var notes:String?
     var exercise:Exercise?
@@ -32,7 +29,9 @@ public class WorkoutSet: CustomStringConvertible {
         return "Weight: \(self.weight) Reps: \(self.reps)"
     }
     
-
+    public func getVolume() -> Int{
+        return weight == 0 ? reps : reps * weight
+    }
 }
 
 

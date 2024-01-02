@@ -11,18 +11,19 @@ struct SetRowView: View {
     @Environment(\.modelContext) private var context
     var exercise: Exercise
     var workoutSet: WorkoutSet
+   
     private func duplicateSet(workoutSet: WorkoutSet){
         withAnimation{
             let duplicateSet = WorkoutSet(weight: workoutSet.weight, reps: workoutSet.reps)
-            duplicateSet.exercise = exercise
-//            exercise.history?.append(duplicateSet)
+//            duplicateSet.exercise = exercise
+            exercise.history?.append(duplicateSet)
         }
     
     }
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("Date \(workoutSet.timestamp.formatted(date: .numeric, time: .omitted))")
+            Text("\(workoutSet.timestamp.formatted(date: .numeric, time: .shortened))")
             Text("\(Int(workoutSet.weight)) x \(Int(workoutSet.reps))")
         }.swipeActions(edge: .leading){
             Button {

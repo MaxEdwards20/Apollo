@@ -43,11 +43,9 @@ struct AddSetView: View {
         withAnimation{
             let workoutSet = WorkoutSet(weight: weight, reps: numberReps) // Create it in context
             exercise.history?.append(workoutSet)
-//            workoutSet.exercise = exercise
             isShowingAddSets = false // close the window
         }
     }
-    
     
     
     var body: some View{
@@ -92,16 +90,16 @@ struct AddSetView: View {
                                 Stepper("", value: $five, in:0...MAX_WEIGHT/5)
                             }.onChange(of: five){calculateFinalWeight()}
                         }
-                        HStack {
-                            Toggle("Time", isOn:$isTime)
-                        }
-                        if (isTime){
-                            HStack{
-                                // Now we add record the time for the set
-                                
-                            }
-                            
-                        }
+//                        HStack {
+//                            Toggle("Time", isOn:$isTime)
+//                        }
+//                        if (isTime){
+//                            HStack{
+//                                // Now we add record the time for the set
+//                                
+//                            }
+//                            
+//                        }
                         if (weight > 0){
                             Button("Reset Weight") {
                                 withAnimation{

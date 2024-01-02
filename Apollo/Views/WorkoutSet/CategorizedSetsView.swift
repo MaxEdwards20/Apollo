@@ -9,14 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct CategorizedSetsView: View {
-    @Query var allWorkoutSets: [WorkoutSet]
     var exercise: Exercise
-    private var history: [WorkoutSet] {
-        // SwiftData CloudKit Sync Video 59:47
-        allWorkoutSets.filter {$0.exercise?.id == exercise.id}
-    }
     private var computed: (today: [WorkoutSet], thisWeek: [WorkoutSet], thisMonth: [WorkoutSet], thisYear: [WorkoutSet]) {
-        exercise.categorizeExerciseSetHistory(workoutSets: history)
+        exercise.categorizeExerciseSetHistory()
     }
     var body: some View {
         List {
@@ -38,9 +33,9 @@ struct CategorizedSetsView: View {
                     }
                 }
             }
-            // TODO: Make this a include the past 4 weeks. Right now it cuts off at the beginning of the month
+
             if !computed.thisMonth.isEmpty{
-                Section(header: Text("This Month")) {
+                Section(header: Text("This Quarter")) {
                     ForEach(computed.thisMonth) { workoutSet in
                         NavigationLink(destination: SetDetailScreen(workoutSet: workoutSet)){
                             SetRowView(exercise: exercise, workoutSet: workoutSet)
