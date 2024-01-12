@@ -18,11 +18,14 @@ struct ExerciseDetailScreen: View {
     // TODO: Add view differences. If we have history, then set all of the values to their appropriate maxes. If not, use the default values
     var body: some View {
         VStack {
-            if  exercise.history == nil || exercise.history!.isEmpty {
+            if  (exercise.history == nil) || (exercise.history!.isEmpty) {
                 NoSetsView()
-            } else {
-                Text("Max Weight: \(exercise.getMaxWeight()) lbs ").font(.title3).padding(.top, -15)
-                Toggle("Show Graph", isOn: $isShowingGraph).padding()
+            } 
+            else {
+                VStack{
+                    Text("Max Weight: \(exercise.getMaxWeight()) lbs ").font(.title3).padding(.top, -15)
+//                    Toggle("Show Graph", isOn: $isShowingGraph).disabled(exercise.history!.count < 3)
+                }
                 if isShowingGraph {
                     Divider().padding(.bottom, 150)
                     VStack{
@@ -30,6 +33,8 @@ struct ExerciseDetailScreen: View {
                     }.padding()
                 } else {
                     Divider()
+                    Text("History")
+                        .font(.title3)
                     SetHistoryView(exercise: exercise)
                 }
             }

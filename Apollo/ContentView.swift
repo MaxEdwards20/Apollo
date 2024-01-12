@@ -39,24 +39,24 @@ struct ContentView: View {
                         Image(systemName: "plus")
                     }
                 }
-                ToolbarItem(placement: .topBarLeading){
-                    Button {
-                        generateData()
-                    } label : {
-                        Text("GenData")
-                    }
-                }
-                ToolbarItem(placement: .topBarLeading){
-                    Button {
-                        for i in exercises {
-                            if i.name.lowercased().contains("test"){
-                                context.delete(i)
-                            }
-                        }
-                    } label : {
-                        Text("DelData")
-                    }
-                }
+//                ToolbarItem(placement: .topBarLeading){
+//                    Button {
+//                        generateData()
+//                    } label : {
+//                        Text("GenData")
+//                    }
+//                }
+//                ToolbarItem(placement: .topBarLeading){
+//                    Button {
+//                        for i in exercises {
+//                            if i.name.lowercased().contains("test"){
+//                                context.delete(i)
+//                            }
+//                        }
+//                    } label : {
+//                        Text("DelData")
+//                    }
+//                }
             }
         }
     }

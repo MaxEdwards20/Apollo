@@ -28,7 +28,6 @@ struct SetDetailScreen: View {
     @State var timestamp: Date = Date.now
     @State var notes: String?
     @State private var isEditing = false
-    @FocusState private var focusedField: Field?
     
     //TODO: Add cards for each part of set to display them prettier with pictures and coloration
     
@@ -60,45 +59,48 @@ struct SetDetailScreen: View {
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("Weight: ")
-                    .padding(.trailing, 10)
-                TextField( "",  value: $weight, formatter: NumberFormatter())
-                    .keyboardType(.numberPad)
-                    .disabled(!isEditing)
-                    .focused($focusedField, equals: .weight)
-                if (isEditing){
-                    Stepper("", value: $weight, in: 0...2000, step: 1).disabled(!isEditing)
-                }
-            }
-            HStack {
-                Text("Reps: ")
-                    .padding(.trailing, 10)
-                TextField("", value: $reps, formatter: NumberFormatter())
-                    .keyboardType(.numberPad)
-                    .disabled(!isEditing)
-                    .focused($focusedField, equals: .reps)
-                if (isEditing){
-                    Stepper("", value: $reps, step: 1).disabled(!isEditing)
-                }
-                
-            }
-            HStack {
-                Text("Date: ")
-                DatePicker("", selection: $timestamp, in: ...Date())
-                    .disabled(!isEditing)
-            }
-            if (notes != nil && !notes!.isEmpty){
+        VStack{
+            VStack {
                 HStack {
-                    Text("Notes: ")
+                    Text("Weight: ")
                         .padding(.trailing, 10)
-                    TextField("This felt heavy ...", value: $notes, formatter: DateFormatter())
+                    TextField( "",  value: $weight, formatter: NumberFormatter())
+                        .keyboardType(.numberPad)
                         .disabled(!isEditing)
-                        .focused($focusedField, equals: .notes)
+                    if (isEditing){
+                        Stepper("", value: $weight, in: 0...2000, step: 1).disabled(!isEditing)
+                    }
                 }
-            }
-            Spacer()
+                HStack {
+                    Text("Reps:     ")
+                        .padding(.trailing, 10)
+                    TextField("", value: $reps, formatter: NumberFormatter())
+                        .keyboardType(.numberPad)
+                        .disabled(!isEditing)
+                    if (isEditing){
+                        Stepper("", value: $reps, step: 1).disabled(!isEditing)
+                    }
+                }
+                HStack {
+                    Text("Date: ")
+                    DatePicker("", selection: $timestamp, in: ...Date())
+                        .disabled(!isEditing)
+                }
+                if (notes != nil && !notes!.isEmpty){
+                    HStack {
+                        Text("Notes: ")
+                            .padding(.trailing, 10)
+                        TextField("This felt heavy ...", value: $notes, formatter: DateFormatter())
+                            .disabled(!isEditing)
+                    }
+                }
+                Spacer()
+            }.padding()
+                .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color.white)
+                    .shadow(radius: 5)
+            )
             if (isEditing){
                 Button(action: {
                     saveChanges()
@@ -113,7 +115,6 @@ struct SetDetailScreen: View {
                         .cornerRadius(8)
                 }
             }
-            
         }.padding()
             .onAppear {
                 loadValues()
@@ -122,12 +123,6 @@ struct SetDetailScreen: View {
             .toolbar{
                 if isEditing {
                     ToolbarItem(placement: .topBarTrailing){
-                        Button("Save"){
-                            saveChanges()
-                            toggleIsEditing()
-                        }
-                    }
-                    ToolbarItem(placement: .topBarLeading){
                         Button("Cancel"){
                             toggleIsEditing()
                         }
@@ -144,7 +139,7 @@ struct SetDetailScreen: View {
 }
 
 private struct PreviewEditWorkoutSet: View {
-    @Query private var sets: [WorkoutSet] // one source of truth
+    @Query private var sets: [WorkoutSet]
     var body: some View {
         NavigationStack {
             SetDetailScreen(workoutSet: sets[0])

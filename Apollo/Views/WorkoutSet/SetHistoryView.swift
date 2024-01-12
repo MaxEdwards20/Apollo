@@ -17,8 +17,6 @@ struct SetHistoryView: View {
     @State private var isShowingAddSets = false
     var body: some View {
         VStack{
-            Text("History")
-                .font(.title3)
             CategorizedSetsView(exercise: exercise)
         }
     }

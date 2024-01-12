@@ -15,7 +15,7 @@ struct SetHistoryChart: View {
     // We can't access this view without there being history. Safe to assume there is history
     var body: some View {
         VStack {
-            LineChartView(data: exercise.history!.map { Double($0.getVolume()) }, title: "Volume")
+            LineChartView(data: exercise.history!.map { Double($0.weight) }, title: "Volume")
                 .padding()
         }
     }
