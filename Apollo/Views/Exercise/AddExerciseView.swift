@@ -25,7 +25,6 @@ struct AddExerciseView: View {
         dismiss()
     }
     
-    
     var body: some View {
         NavigationStack{
             Form {
@@ -44,20 +43,19 @@ struct AddExerciseView: View {
                     .font(.title2)
                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
                     .foregroundColor(.white)
-                    
+                
             }.padding()
-            .disabled(name.isEmpty)
+                .disabled(name.isEmpty)
             
-            .navigationTitle("Add Exercise")
-
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading){
-                    Button("Close"){
-                        dismiss()
+                .navigationTitle("Add Exercise")
+            
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading){
+                        Button("Close"){
+                            dismiss()
+                        }
                     }
                 }
-            }
-            
         }
         
     }

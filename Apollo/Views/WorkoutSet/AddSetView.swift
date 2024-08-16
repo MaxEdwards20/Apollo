@@ -50,84 +50,83 @@ struct AddSetView: View {
     
     var body: some View{
         NavigationStack {
-            VStack {
-                List{
-                    Section {
+            List{
+                Section {
+                    HStack {
+                        Text("Weight: ")
+                            .padding(.trailing, 20)
+                        
+                        TextField("", value: $weight, formatter: NumberFormatter())
+                            .keyboardType(.numberPad)
+                    }
+                    HStack {
+                        Toggle("Barbell", isOn: $addBarbell)
+                            .onChange(of: addBarbell){calculateFinalWeight()}
+                    }
+                    if (addBarbell){
                         HStack {
-                            Text("Weight: ")
+                            Text("45 lbs: ")
                                 .padding(.trailing, 20)
-                            
-                            TextField("", value: $weight, formatter: NumberFormatter())
-                                .keyboardType(.numberPad)
-                        }
+                            TextField("", value: $fortyFive, formatter:NumberFormatter()).keyboardType(.numberPad)
+                            Stepper("", value: $fortyFive, in:0...MAX_WEIGHT/45)
+                        }.onChange(of: fortyFive){calculateFinalWeight()}
                         HStack {
-                            Toggle("Barbell", isOn: $addBarbell)
-                                .onChange(of: addBarbell){calculateFinalWeight()}
-                        }
-                        if (addBarbell){
-                            HStack {
-                                Text("45 lbs: ")
-                                    .padding(.trailing, 20)
-                                TextField("", value: $fortyFive, formatter:NumberFormatter()).keyboardType(.numberPad)
-                                Stepper("", value: $fortyFive, in:0...MAX_WEIGHT/45)
-                            }.onChange(of: fortyFive){calculateFinalWeight()}
-                            HStack {
-                                Text("25 lbs: ")
-                                    .padding(.trailing, 20)
-                                TextField("", value: $twentyFive, formatter:NumberFormatter()).keyboardType(.numberPad)
-                                Stepper("", value: $twentyFive, in:0...MAX_WEIGHT/25)
-                            }.onChange(of: twentyFive){calculateFinalWeight()}
-                            HStack {
-                                Text("10 lbs: ")
-                                    .padding(.trailing, 20)
-                                TextField("", value: $ten, formatter:NumberFormatter()).keyboardType(.numberPad)
-                                Stepper("", value: $ten    , in:0...MAX_WEIGHT/10)
-                            }.onChange(of: ten){calculateFinalWeight()}
-                            HStack {
-                                Text("5 lbs: ")
-                                    .padding(.trailing, 20)
-                                TextField("", value: $five, formatter:NumberFormatter()).keyboardType(.numberPad)
-                                Stepper("", value: $five, in:0...MAX_WEIGHT/5)
-                            }.onChange(of: five){calculateFinalWeight()}
-                        }
-
-                        if (weight > 0){
-                            Button("Reset Weight") {
-                                withAnimation{
-                                    resetWeights()
-                                }
+                            Text("25 lbs: ")
+                                .padding(.trailing, 20)
+                            TextField("", value: $twentyFive, formatter:NumberFormatter()).keyboardType(.numberPad)
+                            Stepper("", value: $twentyFive, in:0...MAX_WEIGHT/25)
+                        }.onChange(of: twentyFive){calculateFinalWeight()}
+                        HStack {
+                            Text("10 lbs: ")
+                                .padding(.trailing, 20)
+                            TextField("", value: $ten, formatter:NumberFormatter()).keyboardType(.numberPad)
+                            Stepper("", value: $ten    , in:0...MAX_WEIGHT/10)
+                        }.onChange(of: ten){calculateFinalWeight()}
+                        HStack {
+                            Text("5 lbs: ")
+                                .padding(.trailing, 20)
+                            TextField("", value: $five, formatter:NumberFormatter()).keyboardType(.numberPad)
+                            Stepper("", value: $five, in:0...MAX_WEIGHT/5)
+                        }.onChange(of: five){calculateFinalWeight()}
+                    }
+                    
+                    if (weight > 0){
+                        Button("Reset Weight") {
+                            withAnimation{
+                                resetWeights()
                             }
                         }
                     }
-                    Section {
-                        HStack {
-                            Text("Reps: ").padding(.trailing, 10)
-                            TextField("", value: $numberReps, formatter: NumberFormatter()).keyboardType(.numberPad)
-                            Stepper("", value: $numberReps, in:1...1000, step: 1)
+                }
+                Section {
+                    HStack {
+                        Text("Reps: ").padding(.trailing, 10)
+                        TextField("", value: $numberReps, formatter: NumberFormatter()).keyboardType(.numberPad)
+                        Stepper("", value: $numberReps, in:1...1000, step: 1)
+                    }
+                }
+                // TODO: Add a "Previous Set" Here
+                // Potentially also add a "recommended reps/weight combination for the user
+            }
+            Button(action: {
+                handleSave()
+            }) {
+                Text("Save")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .font(.title2)
+                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
+                    .foregroundColor(.white)
+            }.padding()
+            
+                .navigationTitle("Add a Set")
+                .toolbar{
+                    ToolbarItem(placement: .topBarLeading){
+                        Button("Close"){
+                            dismiss()
                         }
                     }
-//                    TODO: Add a "Previous Set" Here
-                    // Potentially also add a "recommended reps/weight combination for the user
                 }
-                Button(action: {
-                    handleSave()
-                }) {
-                    Text("Save")
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .font(.title2)
-                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
-                        .foregroundColor(.white)
-                }.padding()
-            }
-            .navigationTitle("Add a Set")
-            .toolbar{
-                ToolbarItem(placement: .topBarLeading){
-                    Button("Close"){
-                        dismiss()
-                    }
-                }
-            }
         }
     }
 }

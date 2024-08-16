@@ -97,10 +97,10 @@ struct SetDetailScreen: View {
                 Spacer()
             }.padding()
                 .background(
-                RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.white)
-                    .shadow(radius: 5)
-            )
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.white)
+                        .shadow(radius: 5)
+                )
             
             if (isEditing){
                 Button(action: {
@@ -111,9 +111,9 @@ struct SetDetailScreen: View {
                     Text("Save Changes")
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color.blue)
+                        .font(.title2)
+                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
                         .foregroundColor(.white)
-                        .cornerRadius(8)
                 }
             }
             else {
@@ -126,7 +126,7 @@ struct SetDetailScreen: View {
                         .font(.title2)
                         .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
                         .foregroundColor(.white)
-                }.padding()
+                }
             }
         }.padding()
             .onAppear {

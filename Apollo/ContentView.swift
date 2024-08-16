@@ -21,15 +21,7 @@ struct ContentView: View {
             SampleData.generateSets(exercise: e)
         }
     }
-    
-//    private func handleSave(){
-//        withAnimation{
-//            let workoutSet = WorkoutSet(weight: weight, reps: numberReps) // Create it in context
-//            exercise.history?.append(workoutSet)
-//            isShowingAddSets = false // close the window
-//        }
-//    }
-    
+        
     var body: some View {
         NavigationStack{
             VStack {

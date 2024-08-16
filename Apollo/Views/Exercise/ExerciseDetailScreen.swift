@@ -17,19 +17,18 @@ struct ExerciseDetailScreen: View {
     @State private var isShowingGraph = false
     // TODO: Add view differences. If we have history, then set all of the values to their appropriate maxes. If not, use the default values
     var body: some View {
-        VStack {
+        NavigationStack {
             if  (exercise.history == nil) || (exercise.history!.isEmpty) {
                 NoSetsView()
-            } 
+            }
             else {
                 VStack{
                     Text("Max Weight: \(exercise.getMaxWeight()) lbs ").font(.title3).padding(.top, -15)
-//                    Toggle("Show Graph", isOn: $isShowingGraph).disabled(exercise.history!.count < 3)
                 }
                 if isShowingGraph {
                     Divider().padding(.bottom, 150)
                     VStack{
-
+                        
                     }.padding()
                 } else {
                     Divider()
@@ -48,16 +47,14 @@ struct ExerciseDetailScreen: View {
                         .font(.title2)
                         .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
                         .foregroundColor(.white)
-                }
+                }.padding()
             }
-            .popover(isPresented: $isShowingAddSets, content: {
+            .sheet(isPresented: $isShowingAddSets, content: {
                 AddSetView(exercise: exercise, isShowingAddSets: $isShowingAddSets)
-                    .padding()
             })
             
         }
         .navigationTitle(exercise.name)
-        .padding()
     }
 }
 
