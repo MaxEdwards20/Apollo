@@ -22,6 +22,14 @@ struct ContentView: View {
         }
     }
     
+//    private func handleSave(){
+//        withAnimation{
+//            let workoutSet = WorkoutSet(weight: weight, reps: numberReps) // Create it in context
+//            exercise.history?.append(workoutSet)
+//            isShowingAddSets = false // close the window
+//        }
+//    }
+    
     var body: some View {
         NavigationStack{
             VStack {
@@ -31,14 +39,19 @@ struct ContentView: View {
             .sheet(isPresented: $isPresented, content: {
                 AddExerciseView()
             })
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing){
-                    Button {
-                        isPresented = true
-                    } label : {
-                        Image(systemName: "plus")
-                    }
-                }
+            Button(action: {
+                isPresented = true
+            }) {
+                Text("Add Exercise")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .font(.title2)
+                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
+                    .foregroundColor(.white)
+            }.padding()
+        }
+           
+                // Used for testing purposes. This generates demo data and also deletes it
 //                ToolbarItem(placement: .topBarLeading){
 //                    Button {
 //                        generateData()
@@ -57,10 +70,8 @@ struct ContentView: View {
 //                        Text("DelData")
 //                    }
 //                }
-            }
         }
     }
-}
 
 #Preview {
     ContentView()

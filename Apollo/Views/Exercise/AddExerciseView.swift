@@ -19,6 +19,12 @@ struct AddExerciseView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     
+    private func handleSave(){
+        let exercise = Exercise(name: name,  group: group)
+        context.insert(exercise) // saves the item
+        dismiss()
+    }
+    
     
     var body: some View {
         NavigationStack{
@@ -29,15 +35,22 @@ struct AddExerciseView: View {
                 }
                 ExerciseGroupPicker(selectedOption: $group)
             }
+            Button(action: {
+                handleSave()
+            }) {
+                Text("Save")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .font(.title2)
+                    .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
+                    .foregroundColor(.white)
+                    
+            }.padding()
+            .disabled(name.isEmpty)
+            
             .navigationTitle("Add Exercise")
+
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing){
-                    Button("Save") {
-                        let exercise = Exercise(name: name,  group: group)
-                        context.insert(exercise) // saves the item
-                        dismiss()
-                    }.disabled(name.isEmpty)
-                }
                 ToolbarItem(placement: .topBarLeading){
                     Button("Close"){
                         dismiss()

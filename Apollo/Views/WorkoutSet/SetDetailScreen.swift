@@ -101,6 +101,7 @@ struct SetDetailScreen: View {
                     .fill(Color.white)
                     .shadow(radius: 5)
             )
+            
             if (isEditing){
                 Button(action: {
                     saveChanges()
@@ -115,6 +116,18 @@ struct SetDetailScreen: View {
                         .cornerRadius(8)
                 }
             }
+            else {
+                Button(action: {
+                    toggleIsEditing()
+                }) {
+                    Text("Edit")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .font(.title2)
+                        .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)) // Adjust color as needed
+                        .foregroundColor(.white)
+                }.padding()
+            }
         }.padding()
             .onAppear {
                 loadValues()
@@ -124,12 +137,6 @@ struct SetDetailScreen: View {
                 if isEditing {
                     ToolbarItem(placement: .topBarTrailing){
                         Button("Cancel"){
-                            toggleIsEditing()
-                        }
-                    }
-                } else {
-                    ToolbarItem(placement: .topBarTrailing){
-                        Button("Edit"){
                             toggleIsEditing()
                         }
                     }
