@@ -28,8 +28,6 @@
 		CF6BDD972AF437C6009B9F0E /* WorkoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD962AF437C6009B9F0E /* WorkoutSet.swift */; };
 		CF6BDD9D2AF47F95009B9F0E /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD9C2AF47F95009B9F0E /* SampleData.swift */; };
 		CF6BDDA02AF480A0009B9F0E /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6BDD9F2AF480A0009B9F0E /* PreviewContainer.swift */; };
-		CF767D1B2B290D7400563221 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = CF767D1A2B290D7400563221 /* SwiftUICharts */; };
-		CF767D1D2B290D9F00563221 /* SetHistoryChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF767D1C2B290D9F00563221 /* SetHistoryChart.swift */; };
 		CFD142202B2A5B82009DDA0C /* CategorizedSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD1421F2B2A5B82009DDA0C /* CategorizedSetsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,7 +57,6 @@
 		CF6BDD9C2AF47F95009B9F0E /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		CF6BDD9F2AF480A0009B9F0E /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
 		CF6BDDA92AF49D88009B9F0E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CF767D1C2B290D9F00563221 /* SetHistoryChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetHistoryChart.swift; sourceTree = "<group>"; };
 		CF767D1E2B2918A900563221 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
 		CFD1421F2B2A5B82009DDA0C /* CategorizedSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorizedSetsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,7 +66,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF767D1B2B290D7400563221 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +103,6 @@
 				CFD1421F2B2A5B82009DDA0C /* CategorizedSetsView.swift */,
 				CF414E712B2221E000018948 /* SetRowView.swift */,
 				CF404C412B23BBFD007CD812 /* NoSetsView.swift */,
-				CF767D1C2B290D9F00563221 /* SetHistoryChart.swift */,
 			);
 			path = WorkoutSet;
 			sourceTree = "<group>";
@@ -191,7 +186,6 @@
 			);
 			name = Apollo;
 			packageProductDependencies = (
-				CF767D1A2B290D7400563221 /* SwiftUICharts */,
 			);
 			productName = Apollo;
 			productReference = CF6BDD7E2AF435D8009B9F0E /* Apollo.app */;
@@ -222,7 +216,6 @@
 			);
 			mainGroup = CF6BDD752AF435D7009B9F0E;
 			packageReferences = (
-				CF767D192B290D7400563221 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = CF6BDD7F2AF435D8009B9F0E /* Products */;
 			projectDirPath = "";
@@ -256,7 +249,6 @@
 				CF404C402B23BA84007CD812 /* NoExercisesView.swift in Sources */,
 				CF6BDD842AF435D8009B9F0E /* ContentView.swift in Sources */,
 				CF3B49842B292D8F00BCDB20 /* WorkoutSetFuncs.swift in Sources */,
-				CF767D1D2B290D9F00563221 /* SetHistoryChart.swift in Sources */,
 				CF404C422B23BBFD007CD812 /* NoSetsView.swift in Sources */,
 				CF6BDD952AF43758009B9F0E /* Exercise.swift in Sources */,
 				CFD142202B2A5B82009DDA0C /* CategorizedSetsView.swift in Sources */,
@@ -484,25 +476,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		CF767D192B290D7400563221 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.5;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CF767D1A2B290D7400563221 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF767D192B290D7400563221 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CF6BDD762AF435D7009B9F0E /* Project object */;
 }

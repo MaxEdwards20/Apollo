@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 import Charts
-import SwiftUICharts
 
 struct SetHistoryChart: View {
     var exercise: Exercise    

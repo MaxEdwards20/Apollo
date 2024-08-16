@@ -90,16 +90,7 @@ struct AddSetView: View {
                                 Stepper("", value: $five, in:0...MAX_WEIGHT/5)
                             }.onChange(of: five){calculateFinalWeight()}
                         }
-//                        HStack {
-//                            Toggle("Time", isOn:$isTime)
-//                        }
-//                        if (isTime){
-//                            HStack{
-//                                // Now we add record the time for the set
-//                                
-//                            }
-//                            
-//                        }
+
                         if (weight > 0){
                             Button("Reset Weight") {
                                 withAnimation{
@@ -115,6 +106,8 @@ struct AddSetView: View {
                             Stepper("", value: $numberReps, in:1...1000, step: 1)
                         }
                     }
+//                    TODO: Add a "Previous Set" Here
+                    // Potentially also add a "recommended reps/weight combination for the user
                 }
                 Button(action: {
                     handleSave()

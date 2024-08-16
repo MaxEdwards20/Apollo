@@ -29,7 +29,7 @@ struct ExerciseDetailScreen: View {
                 if isShowingGraph {
                     Divider().padding(.bottom, 150)
                     VStack{
-                        SetHistoryChart(exercise: exercise)
+
                     }.padding()
                 } else {
                     Divider()
